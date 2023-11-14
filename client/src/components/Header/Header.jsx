@@ -4,7 +4,7 @@ export default function Header() {
       <header id="header" className="hoc clear">
         <div id="logo" className="fl_left">
           <h1>
-            <a href="index.html">The Book Hunt</a>
+            <a href="/">The Book Hunt</a>
           </h1>
           <p>let the fun begins...</p>
         </div>
