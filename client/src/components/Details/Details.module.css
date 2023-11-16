@@ -1,69 +1,104 @@
-.details img {
-    max-height: 300px;
-    
+.details {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.image-div {
+  flex: 0 0 40%;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.image-div img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.details-product {
+  flex: 1;
+}
+
+.details h2 {
+  color: #2c3e50;
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.span-style span {
+  font-weight: bold;
+  color: #3498db;
+}
+
+.details-product p {
+  margin: 10px 0;
+  color: #34495e;
+}
+
+.comments {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.comment-area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comment-area textarea {
+  flex: 1;
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 1em;
+}
+
+.comment-area button {
+  flex: 0 0 48%;
+  background-color: #e74c3c;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.comment-area button:hover {
+  background-color: #c0392b;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .details {
+    padding: 0 10px;
+    flex-direction: column;
+    align-items: center;
   }
-  
-  .details-product {
-    width: 450px;
-    padding-right: 100px;
-    display: block;
-    font-size: 22px;
-    float: right;
-  
-  }
-  
-  .details h2, h3{
-    color: mediumvioletred;
-   
-  }
-  .comment-area {
-  
-    padding-top: 20px;
-    display: block;
-    text-align: center;
-    padding-right: 35px;
-  }
-  
+
   .image-div {
-    max-width: 300px;
-    padding: 20px ;
-    display: block;
-    float: left;
-    text-align: center;
+    flex: 1;
+    margin-right: 0;
+    margin-bottom: 20px;
   }
-  .details-product button {
-  
-    background: antiquewhite;
-    font-size: 18px;
-    border: 0;
-    margin: 10px 5px;
-    color: mediumvioletred;
-    box-shadow: 5px 2px 8px 5px #c19595;
-    padding: 5px 10px;
-    border-radius: 5px;
-  
+
+  .details-product {
+    flex: 1;
   }
-  
-  .details button:hover {
-    background-color: mediumvioletred;
-    font-size: 25px;
-    
-    border: 0;
-    color: antiquewhite;
-    box-shadow: mediumvioletred (rgb(206, 206, 206));
-    cursor: pointer;
-    
+
+  .comment-area textarea {
+    font-size: 0.9em;
   }
-  .comments{
-    text-align: left;
+
+  .comment-area button {
+    flex: 0 0 100%;
   }
-  .comments h3{
-  
-    margin-top:390px;
-    
-  }
-  .comments p{
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-  }
+}

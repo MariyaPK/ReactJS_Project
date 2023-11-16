@@ -36,14 +36,16 @@ export default function Details() {
           </p>
           <p>
             <span>Publish year: </span>
-            {books.publishYear}{" "}
+            {books.publishYear}
           </p>
         </article>
 
-        <Link to={`/details/${bookID}`}>
+        <Link to={`/details/${bookID}/edit`}>
           <button type="submit">Edit</button>
         </Link>
-        <button type="submit" onClick={deleteClickHandler} >Delete</button>
+        <button type="submit" onClick={deleteClickHandler}>
+          Delete
+        </button>
         <button type="submit">Like</button>
         <button type="submit">Comment</button>
 
