@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Footer() {
   return (
     <div className="wrapper row4">
@@ -5,54 +7,54 @@ export default function Footer() {
         <h3 className="heading">The Book Hunt</h3>
         <ul className="nospace inline pushright uppercase">
           <li>
-            <a href="/">
+            <Link to="/">
               <i className="fa fa-lg fa-home"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/catalog">Catalog</a>
+            <Link to="/catalog">Catalog</Link>
           </li>
           <li>
-            <a href="/login">Login</a>
+            <Link to="/login">Login</Link>
           </li>
           <li>
-            <a href="/register">Register</a>
+            <Link to="/register">Register</Link>
           </li>
         </ul>
         <ul className="faico clear">
           <li>
-            <a className="faicon-facebook" href="/facebook">
+            <Link className="faicon-facebook" to="https://www.facebook.com/">
               <i className="fa fa-facebook"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="faicon-twitter" href="/twitter">
+            <Link className="faicon-twitter" to="https://www.twitter.com/">
               <i className="fa fa-twitter"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="faicon-linkedin" href="linkdin">
+            <Link className="faicon-linkedin" to="https://www.linkedin.com/">
               <i className="fa fa-linkedin"></i>
-            </a>
+            </Link>
           </li>
           <li>
-            <a className="faicon-google-plus" href="googleplus">
+            <Link className="faicon-google-plus" to="https://www.googleplus.com/">
               <i className="fa fa-google-plus"></i>
-            </a>
+            </Link>
           </li>
         </ul>
         <div id="copyright">
           <p>
-            Copyright &copy; 2023 - All Rights Reserved - <a href="/">The Book Hunt</a>
+            Copyright &copy; 2023 - All Rights Reserved - <Link to="/">The Book Hunt</Link>
           </p>
           <p className="font-xs">
-            Template by{" "}
-            <a target="_blank" href="http://www.os-templates.com/" title="Free Website Templates">
+            Template by {" "}
+            <Link target="_blank" to="http://www.os-templates.com/" title="Free Website Templates">
               OS Templates
-            </a>
+            </Link>
           </p>
         </div>
       </footer>
     </div>
   );
-};
+}

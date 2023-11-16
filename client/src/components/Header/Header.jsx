@@ -1,27 +1,29 @@
+import { Link } from "react-router-dom";
+
 export default function Header() {
   return (
     <div className="wrapper row1">
       <header id="header" className="hoc clear">
         <div id="logo" className="fl_left">
           <h1>
-            <a href="/">The Book Hunt</a>
+            <Link to="/">The Book Hunt</Link>
           </h1>
           <p>let the fun begins...</p>
         </div>
         <nav id="mainav" className="fl_right">
           <ul className="clear">
             <li className="active">
-              <a href="/">Home</a>
+              <Link to="/">Home</Link>
             </li>
-                <li>
-                  <a href="/catalog">Catalog</a>
-                </li>
-                <li>
-                  <a href="/create">Create</a>
-                </li>
-                <li>
-                  <a href="/my-books">My Books</a>
-                </li>
+            <li>
+              <Link to="/catalog">Catalog</Link>
+            </li>
+            <li>
+              <Link to="/books/create">Create</Link>
+            </li>
+            <li>
+              <Link to="/my-books">My Books</Link>
+            </li>
           </ul>
         </nav>
       </header>

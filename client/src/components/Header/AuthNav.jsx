@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AuthNav() {
   return (
     <div className="wrapper row0">
@@ -15,18 +17,18 @@ export default function AuthNav() {
         <div className="fl_right">
           <ul className="nospace">
             <li>
-              <a href="/">
+              <Link to="/">
                 <i className="fa fa-lg fa-home"></i>
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/register">Register</a>
+              <Link to="/register">Register</Link>
             </li>
             <li>
-              <a href="/login">Login</a>
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <a href="/logout">Logout</a>
+              <Link to="/logout">Logout</Link>
             </li>
           </ul>
         </div>
