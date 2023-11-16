@@ -12,6 +12,7 @@ import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
+import NotFound from "./components/NotFound/NotFound"
 import Loading from "./components/Loading/Loading";
 import Footer from "./components/Footer/Footer";
 
@@ -38,12 +39,14 @@ function App() {
           <Route path="/create" element={<Create />} />
           <Route path="/details/:bookID" element={<Details />} />
           <Route path="/details/:bookID/edit" element={<Edit />} />
+          <Route path='/404' element={<NotFound />} />
+          <Route path='*' element={<NotFound />} />   
 
-          {/* <Route path='/contact-us' element={<ContactUs/>} />
+          {/*
+           <Route path='/contact-us' element={<ContactUs/>} />
          <Route path='/about' element={<About />} />
-         <Route path='/not-found' element={<NotFound />} />
          <Route path='/search' element={<Search />} />
-         <Route path='*' element={<NotFound />} />    */}
+          */}
         </Routes>
       </main>
 
