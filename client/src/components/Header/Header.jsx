@@ -19,7 +19,7 @@ export default function Header() {
               <Link to="/catalog">Catalog</Link>
             </li>
             <li>
-              <Link to="/books/create">Create</Link>
+              <Link to="/create">Create</Link>
             </li>
             <li>
               <Link to="/my-books">My Books</Link>
