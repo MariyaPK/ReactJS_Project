@@ -1,101 +1,144 @@
+import React from "react";
 import { useState } from "react";
 import * as bookService from "../../services/bookService";
 import { useNavigate } from "react-router-dom";
+import styles from "./Create.module.css";
 
 const formInitialState = {
   title: "",
   isbn: "",
   author: "",
   imageUrl: "",
-  genre: "",
+  genres: [],
   publishYear: "",
   description: "",
 };
 
-export default function Create() {
+const Create = () => {
   const navigate = useNavigate();
   const [book, setBook] = useState(formInitialState);
 
-  const onChangeHandler = (e) => {
-    let { name, value, type } = e.target;
-    setBook((state) => ({ ...state, [name]: type === "number" ? Number(value) : value }));
+  const handleCheckboxChange = (genre) => {
+    setBook((book) => {
+      const isSelected = book.genres.includes(genre);
+      if (isSelected) {
+        return { ...book, genres: book.genres.filter((selectedGenre) => selectedGenre !== genre) };
+      } else {
+        return { ...book, genres: [...book.genres, genre] };
+      }
+    });
   };
-
-  // const resetHandler = () => {
-  //     console.log('reset')
-  //     setProductDetails(formInitialState);
-
-  // }
 
   const onSubmit = (e) => {
     e.preventDefault();
-    onCreateBookSubmit(book);
-    // resetHandler();
+    onCreateBookSubmit();
   };
+
   const onCreateBookSubmit = () => {
     bookService
       .create(book)
       .then((result) => {
-        setBook(result);
+        setBook(formInitialState); // Reset the form after successful creation
         navigate("/catalog");
       })
-      .catch((error) => console.log(error("Error creating book:", error)));
+      .catch((error) => console.error("Error creating book:", error));
   };
 
   return (
-    <section id="create">
-      <div className="form">
+    <section className={styles.create}>
+      <div className={styles.form}>
         <h2>ADD NEW BOOK</h2>
-        <form className="create-form" onSubmit={onSubmit}>
-          <input value={book.name} onChange={onChangeHandler} type="text" name="title" id="title" placeholder="Title" />
-          <input value={book.isbn} onChange={onChangeHandler} type="text" name="isbn" id="isbn" placeholder="ISBN" />
-          <input value={book.author} onChange={onChangeHandler} type="text" name="author" id="author" placeholder="Author" />
-
-          <input
-            value={book.imageUrl}
-            onChange={onChangeHandler}
-            type="text"
-            name="imageUrl"
-            id="cover-image"
-            placeholder="Image"
-          />
-          <div className="genre">
-            <select placeholder="Genre" name="genre">
-              <option value="">Genre</option>
-              <option value="Comics">Comics</option>
-              <option value="Cookbooks">Cookbooks</option>
-              <option value="Crime">Crime</option>
-              <option value="Fantasy">Fantasy</option>
-              <option value="Fiction">Fiction</option>
-              <option value="History">History</option>
-              <option value="Humor and comedy">Humor and comedy</option>
-              <option value="Mystery">Mystery</option>
-              <option value="Science fiction">Science fiction</option>
-              <option value="Travel">Travel</option>
-              <option value="Other">Other</option>
-            </select>
+        <form className={styles["create-form"]} onSubmit={onSubmit}>
+          <div className={styles["form-group"]}>
+            <label htmlFor="title">Title</label>
+            <input
+              value={book.title}
+              onChange={(e) => setBook((book) => ({ ...book, title: e.target.value }))}
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+            />
           </div>
-          <input
-            value={book.publishYear}
-            onChange={onChangeHandler}
-            type="text"
-            name="publishYear"
-            id="publish-year"
-            placeholder="Published year"
-          />
-          <textarea
-            value={book.description}
-            onChange={onChangeHandler}
-            id="book-description"
-            name="description"
-            placeholder="Description"
-            rows="5"
-            cols="100"
-          ></textarea>
+          <div className={styles["form-group"]}>
+            <label htmlFor="isbn">ISBN</label>
+            <input
+              value={book.isbn}
+              onChange={(e) => setBook((book) => ({ ...book, isbn: e.target.value }))}
+              type="text"
+              name="isbn"
+              id="isbn"
+              placeholder="ISBN"
+            />
+          </div>
+          <div className={styles["form-group"]}>
+            <label htmlFor="author">Author</label>
+            <input
+              value={book.author}
+              onChange={(e) => setBook((book) => ({ ...book, author: e.target.value }))}
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+            />
+          </div>
+          <div className={styles["form-group"]}>
+            <label htmlFor="cover-image">Cover</label>
+            <input
+              value={book.imageUrl}
+              onChange={(e) => setBook((book) => ({ ...book, imageUrl: e.target.value }))}
+              type="text"
+              name="imageUrl"
+              id="cover-image"
+              placeholder="Cover"
+            />
+          </div>
+          <div className={styles["form-group"]}>
+            <label>Genres</label>
+            <div className={styles["checkbox-group"]}>
+              {["Comics", "Cookbooks", "Crime", "Fantasy", "Fiction", "History", "Humor and comedy", "Mystery", "Science fiction", "Travel", "Other"].map((genre) => (
+                <label key={genre} className={styles["checkbox-label"]}>
+                  <input
+                    type="checkbox"
+                    value={genre}
+                    checked={book.genres.includes(genre)}
+                    onChange={() => handleCheckboxChange(genre)}
+                  />
+                  {genre}
+                </label>
+              ))}
+            </div>
+          </div>
+          <div className={styles["form-group"]}>
+            <label htmlFor="publish-year">Published Year</label>
+            <input
+              value={book.publishYear}
+              onChange={(e) => setBook((book) => ({ ...book, publishYear: e.target.value }))}
+              type="text"
+              name="publishYear"
+              id="publish-year"
+              placeholder="Published year"
+            />
+          </div>
+          <div className={styles["form-group"]}>
+            <label htmlFor="book-description">Description</label>
+            <textarea
+              value={book.description}
+              onChange={(e) => setBook((book) => ({ ...book, description: e.target.value }))}
+              id="book-description"
+              name="description"
+              placeholder="Description"
+              rows="5"
+              cols="100"
+            ></textarea>
+          </div>
 
           <button type="submit">Add book</button>
         </form>
       </div>
     </section>
   );
-}
+};
+
+export default Create;
+

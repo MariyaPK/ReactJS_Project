@@ -1,0 +1,87 @@
+/* Create.module.css */
+
+.form {
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .create-form {
+    display: grid;
+    gap: 10px;
+  }
+  
+  .create-form input,
+  .create-form select,
+  .create-form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .create-form button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .create-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .create-form textarea {
+    resize: vertical;
+  }
+  
+  .genre {
+    position: relative;
+  }
+  
+  /* You can style the genre dropdown arrow */
+  .genre::after {
+    content: '\25BC';
+    font-size: 14px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  /* Responsive layout */
+  @media (max-width: 600px) {
+    .form {
+      width: 90%;
+    }
+  }
+
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .checkbox-label {
+    width: 33.33%;
+    box-sizing: border-box;
+    padding: 5px;
+  }
+  
+  .checkbox-label input {
+    margin-right: 5px;
+  }
+  
