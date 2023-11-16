@@ -17,7 +17,6 @@ export default function Edit() {
   });
 
   useEffect(() => {
-    // Fetch the existing book details when the component mounts
     bookService.getOne(bookID).then((result) => {
       setBook(result);
     });
@@ -60,7 +59,6 @@ export default function Edit() {
       <div className="form">
         <h2>EDIT</h2>
         <form className="edit-form" onSubmit={onSubmitHandler}>
-          {/* Render input fields with current book details */}
           <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={onChangeHandler} />
           <input type="text" name="isbn" id="isbn" placeholder="ISBN" value={book.isbn} onChange={onChangeHandler} />
           <input type="text" name="author" id="author" placeholder="Author" value={book.author} onChange={onChangeHandler} />
@@ -73,7 +71,6 @@ export default function Edit() {
             onChange={onChangeHandler}
           />
           <div className="genre">
-            {/* Render genre checkboxes :   "Mystery", "Science fiction", "Travel", "Other*/}
             <label>
               <input
                 type="checkbox"
