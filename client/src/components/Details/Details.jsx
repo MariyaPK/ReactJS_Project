@@ -1,12 +1,13 @@
 import styles from "./Details.module.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import * as bookService from "../../services/bookService";
-import { useState, useEffect } from "react";
 
 export default function Details() {
   const { bookID } = useParams();
+  const navigate = useNavigate();
   const [books, setBooks] = useState({});
 
   useEffect(() => {
@@ -15,9 +16,16 @@ export default function Details() {
     });
   }, [bookID]);
 
-  const deleteClickHandler = () => {
-    onDeleteClick(bookID);
-  };
+  const deleteClickHandler = async () => {
+    // eslint-disable-next-line no-restricted-globals
+    const result = confirm(`Are you sure you want to delete this photo?`);
+
+    if (result) {
+        await bookService.getDelete(books._id);
+
+        navigate('/catalog');
+    };
+};
 
   return (
     <section className={styles.details}>
@@ -51,7 +59,6 @@ export default function Details() {
 
         <div className={styles["comment-area"]}>
           <textarea id="comment-area" name="comment" placeholder="Your comment" rows="3" cols="40"></textarea>
-
           <button type="submit">Add comment</button>
         </div>
       </div>
