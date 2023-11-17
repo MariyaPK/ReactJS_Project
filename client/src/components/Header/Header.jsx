@@ -24,6 +24,9 @@ export default function Header() {
             <li>
               <Link to="/my-books">My Books</Link>
             </li>
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
           </ul>
         </nav>
       </header>
