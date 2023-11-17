@@ -13,6 +13,7 @@ import Create from "./components/Create/Create";
 import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
 import NotFound from "./components/NotFound/NotFound"
+import Search from "./components/Search/Search"
 import Loading from "./components/Loading/Loading";
 import Footer from "./components/Footer/Footer";
 
@@ -41,11 +42,11 @@ function App() {
           <Route path="/details/:bookID/edit" element={<Edit />} />
           <Route path='/404' element={<NotFound />} />
           <Route path='*' element={<NotFound />} />   
+          <Route path='/search' element={<Search />} />
 
           {/*
            <Route path='/contact-us' element={<ContactUs/>} />
          <Route path='/about' element={<About />} />
-         <Route path='/search' element={<Search />} />
           */}
         </Routes>
       </main>
