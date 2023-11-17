@@ -8,7 +8,7 @@ export default function Catalog() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
     bookService.getAll().then((result) => {
-      console.log(result);
+      // console.log(result);
       setBooks(result);
     });
   }, []);

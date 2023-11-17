@@ -17,15 +17,23 @@ export const getAll = async () => {
 export const create = async (bookData) => {
   const result = await request.post(baseUrl, bookData);
 
-  console.log(result);
+  // console.log(result);
 
   return result;
 };
 
-export const getOne = async (bookId) => {
-  const result = await request.get(`${baseUrl}/${bookId}`);
+export const getOne = async (bookID) => {
+  const result = await request.get(`${baseUrl}/${bookID}`);
 
-  console.log(result);
+  // console.log(result);
 
+  return result;
+};
+
+export const getDelete = async (bookID) => {
+  const result = await request.get(`${baseUrl}/${bookID}`);
+
+  // console.log(result);
+  
   return result;
 };
