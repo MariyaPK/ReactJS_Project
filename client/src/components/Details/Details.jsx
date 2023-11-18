@@ -9,6 +9,7 @@ export default function Details() {
   const { bookID } = useParams();
   const navigate = useNavigate();
   const [books, setBooks] = useState({});
+  const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
     bookService.getOne(bookID).then((result) => {
@@ -46,8 +47,18 @@ export default function Details() {
             {books.publishYear}
           </p>
           <p>
-            <span>Summary: </span>
-            {books.description}
+          <span>Summary: </span>
+            {showMore ? books.description : `${books.description?.slice(0, 100)}...`}
+            {!showMore && (
+              <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
+                Show More
+              </button>
+            )}
+            {showMore && (
+              <button className={styles.showMoreButton} onClick={() => setShowMore(false)}>
+                Show Less
+              </button>
+            )}
           </p>
         </article>
 
