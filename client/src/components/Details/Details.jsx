@@ -47,7 +47,7 @@ export default function Details() {
             {books.publishYear}
           </p>
           <p>
-          <span>Summary: </span>
+            <span>Summary: </span>
             {showMore ? books.description : `${books.description?.slice(0, 100)}...`}
             {!showMore && (
               <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
@@ -59,6 +59,9 @@ export default function Details() {
                 Show Less
               </button>
             )}
+          </p>
+          <p>
+            <span> Likes: </span>
           </p>
         </article>
 
