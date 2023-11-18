@@ -30,4 +30,6 @@ export const getOne = async (bookID) => {
   return result;
 };
 
-export const getDelete = (bookID) => request.del(`${baseUrl}/${bookID}`);
+export const edit = (bookID, bookData) => request.put(`${baseUrl}/${bookID}`, bookData);
+
+export const deleteBook = (bookID) => request.del(`${baseUrl}/${bookID}`);
