@@ -17,15 +17,14 @@ export default function Details() {
   }, [bookID]);
 
   const deleteClickHandler = async () => {
-    // eslint-disable-next-line no-restricted-globals
     const result = confirm(`Are you sure you want to delete this photo?`);
 
     if (result) {
-        await bookService.getDelete(books._id);
+      await bookService.deleteBook(books._id);
 
-        navigate('/catalog');
-    };
-};
+      navigate("/catalog");
+    }
+  };
 
   return (
     <section className={styles.details}>
@@ -45,6 +44,10 @@ export default function Details() {
           <p>
             <span>Publish year: </span>
             {books.publishYear}
+          </p>
+          <p>
+            <span>Summary: </span>
+            {books.description}
           </p>
         </article>
 

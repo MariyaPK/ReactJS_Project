@@ -1,4 +1,3 @@
-import React from "react";
 import { useState } from "react";
 import * as bookService from "../../services/bookService";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +8,7 @@ const formInitialState = {
   isbn: "",
   author: "",
   imageUrl: "",
-  genres: [],
+  genre: [],
   publishYear: "",
   description: "",
 };
@@ -20,11 +19,11 @@ const Create = () => {
 
   const handleCheckboxChange = (genre) => {
     setBook((book) => {
-      const isSelected = book.genres.includes(genre);
+      const isSelected = book.genre.includes(genre);
       if (isSelected) {
-        return { ...book, genres: book.genres.filter((selectedGenre) => selectedGenre !== genre) };
+        return { ...book, genre: book.genre.filter((selectedGenre) => selectedGenre !== genre) };
       } else {
-        return { ...book, genres: [...book.genres, genre] };
+        return { ...book, genre: [...book.genre, genre] };
       }
     });
   };
@@ -37,7 +36,7 @@ const Create = () => {
   const onCreateBookSubmit = () => {
     bookService
       .create(book)
-      .then((result) => {
+      .then(() => {
         setBook(formInitialState); // Reset the form after successful creation
         navigate("/catalog");
       })
@@ -101,7 +100,7 @@ const Create = () => {
                   <input
                     type="checkbox"
                     value={genre}
-                    checked={book.genres.includes(genre)}
+                    checked={book.genre.includes(genre)}
                     onChange={() => handleCheckboxChange(genre)}
                   />
                   {genre}
