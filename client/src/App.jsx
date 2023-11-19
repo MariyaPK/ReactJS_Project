@@ -8,14 +8,19 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
+import Logout from "./components/Logout/Logout";
+import RouteGuard from "./components/RouteGuard/RouteGuard";
+import Owner from "./components/Owner/Owner";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Details from "./components/Details/Details";
 import Edit from "./components/Edit/Edit";
-import NotFound from "./components/NotFound/NotFound"
-import Search from "./components/Search/Search"
+import NotFound from "./components/NotFound/NotFound";
+import Search from "./components/Search/Search";
 import Loading from "./components/Loading/Loading";
 import Footer from "./components/Footer/Footer";
+import { AuthProvider } from "./contexts/AuthContext";
+import { BookProvider } from "./contexts/BookContext";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -26,30 +31,46 @@ function App() {
 
   return (
     <>
-      <AuthNav />
-      <Header />
+      <AuthProvider>
+        <BookProvider>
+          <AuthNav />
+          <Header />
 
-      <main>
-        {isLoading && <Loading />}
+          <main>
+            {isLoading && <Loading />}
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/details/:bookID" element={<Details />} />
-          <Route path="/details/:bookID/edit" element={<Edit />} />
-          <Route path='/404' element={<NotFound />} />
-          <Route path='*' element={<NotFound />} />   
-          <Route path='/search' element={<Search />} />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/details/:bookID" element={<Details />} />
 
-          {/*
+              <Route element={<RouteGuard />}>
+                <Route path="/create" element={<Create />} />
+                <Route
+                  path="/details/:bookID/edit"
+                  element={
+                    <Owner>
+                      <Edit />
+                    </Owner>
+                  }
+                />
+                <Route path="/logout" element={<Logout />} />
+              </Route>
+
+              <Route path="/404" element={<NotFound />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="/search" element={<Search />} />
+
+              {/*
            <Route path='/contact-us' element={<ContactUs/>} />
          <Route path='/about' element={<About />} />
           */}
-        </Routes>
-      </main>
+            </Routes>
+          </main>
+        </BookProvider>
+      </AuthProvider>
 
       <Footer />
 
