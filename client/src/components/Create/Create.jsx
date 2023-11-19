@@ -1,58 +1,34 @@
-import { useState } from "react";
-import * as bookService from "../../services/bookService";
-import { useNavigate } from "react-router-dom";
 import styles from "./Create.module.css";
 
-const formInitialState = {
-  title: "",
-  isbn: "",
-  author: "",
-  imageUrl: "",
-  genre: [],
-  publishYear: "",
-  description: "",
-};
+import { useBookContext } from "../../contexts/BookContext";
+import { useForm } from "../../hooks/useForm";
 
 const Create = () => {
-  const navigate = useNavigate();
-  const [book, setBook] = useState(formInitialState);
+  const { onCreateBookSubmit } = useBookContext();
 
-  const handleCheckboxChange = (genre) => {
-    setBook((book) => {
-      const isSelected = book.genre.includes(genre);
-      if (isSelected) {
-        return { ...book, genre: book.genre.filter((selectedGenre) => selectedGenre !== genre) };
-      } else {
-        return { ...book, genre: [...book.genre, genre] };
-      }
-    });
-  };
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    onCreateBookSubmit();
-  };
-
-  const onCreateBookSubmit = () => {
-    bookService
-      .create(book)
-      .then(() => {
-        setBook(formInitialState); // Reset the form after successful creation
-        navigate("/catalog");
-      })
-      .catch((error) => console.error("Error creating book:", error));
-  };
+  const { book, changeHandler, onSubmit, handleCheckboxChange } = useForm(
+    {
+      title: "",
+      isbn: "",
+      author: "",
+      imageUrl: "",
+      genre: [],
+      publishYear: "",
+      description: "",
+    },
+    onCreateBookSubmit
+  );
 
   return (
     <section className={styles.create}>
       <div className={styles.form}>
         <h2>ADD NEW BOOK</h2>
-        <form className={styles["create-form"]} onSubmit={onSubmit}>
+        <form className={styles["create-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
             <label htmlFor="title">Title</label>
             <input
               value={book.title}
-              onChange={(e) => setBook((book) => ({ ...book, title: e.target.value }))}
+              onChange={changeHandler}
               type="text"
               name="title"
               id="title"
@@ -63,7 +39,7 @@ const Create = () => {
             <label htmlFor="isbn">ISBN</label>
             <input
               value={book.isbn}
-              onChange={(e) => setBook((book) => ({ ...book, isbn: e.target.value }))}
+              onChange={changeHandler}
               type="text"
               name="isbn"
               id="isbn"
@@ -74,7 +50,7 @@ const Create = () => {
             <label htmlFor="author">Author</label>
             <input
               value={book.author}
-              onChange={(e) => setBook((book) => ({ ...book, author: e.target.value }))}
+              onChange={changeHandler}
               type="text"
               name="author"
               id="author"
@@ -85,7 +61,7 @@ const Create = () => {
             <label htmlFor="cover-image">Cover</label>
             <input
               value={book.imageUrl}
-              onChange={(e) => setBook((book) => ({ ...book, imageUrl: e.target.value }))}
+              onChange={changeHandler}
               type="text"
               name="imageUrl"
               id="cover-image"
@@ -95,7 +71,19 @@ const Create = () => {
           <div className={styles["form-group"]}>
             <label>Genres</label>
             <div className={styles["checkbox-group"]}>
-              {["Comics", "Cookbooks", "Crime", "Fantasy", "Fiction", "History", "Humor and comedy", "Mystery", "Science fiction", "Travel", "Other"].map((genre) => (
+              {[
+                "Comics",
+                "Cookbooks",
+                "Crime",
+                "Fantasy",
+                "Fiction",
+                "History",
+                "Humor and comedy",
+                "Mystery",
+                "Science fiction",
+                "Travel",
+                "Other",
+              ].map((genre) => (
                 <label key={genre} className={styles["checkbox-label"]}>
                   <input
                     type="checkbox"
@@ -112,7 +100,7 @@ const Create = () => {
             <label htmlFor="publish-year">Published Year</label>
             <input
               value={book.publishYear}
-              onChange={(e) => setBook((book) => ({ ...book, publishYear: e.target.value }))}
+              onChange={changeHandler}
               type="text"
               name="publishYear"
               id="publish-year"
@@ -123,7 +111,7 @@ const Create = () => {
             <label htmlFor="book-description">Description</label>
             <textarea
               value={book.description}
-              onChange={(e) => setBook((book) => ({ ...book, description: e.target.value }))}
+              onChange={changeHandler}
               id="book-description"
               name="description"
               placeholder="Description"
@@ -140,4 +128,3 @@ const Create = () => {
 };
 
 export default Create;
-

@@ -1,34 +1,20 @@
 import styles from "./Catalog.module.css";
-import { useState, useEffect } from "react";
-import * as bookService from "../../services/bookService";
+
+import { useBookContext } from "../../contexts/BookContext";
 import CatalogItem from "./CatalogItem";
-import Loading from "../Loading/Loading";
+// import Loading from "../Loading/Loading";
 
 
 export default function Catalog() {
-  const [books, setBooks] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const result = await bookService.getAll();
-        setBooks(result);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const { books } = useBookContext();
+  
 
   return (
     <section className={styles.catalog}>
       <h2>CATALOG</h2>
-      {isLoading ? (
+      {/* {isLoading ? (
         <Loading />
-      ) : (
+      ) : ( */}
         <>
           {books?.length > 0 ? (
             <ul>
@@ -40,7 +26,7 @@ export default function Catalog() {
             <h3 className="no-articles">No books added yet</h3>
           )}
         </>
-      )}
+      {/* )} */}
     </section>
   );
 }
