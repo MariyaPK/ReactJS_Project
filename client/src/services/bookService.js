@@ -1,6 +1,6 @@
 import { requestFactory } from "./requester";
 
-const baseUrl = "http://localhost:3030/data/books";
+const baseUrl = "http://localhost:3030/jsonstore/books";
 
 export const bookServiceFactory = (token) => {
   const request = requestFactory(token);
@@ -25,7 +25,7 @@ export const bookServiceFactory = (token) => {
     return result;
   };
 
-  const getOne = async (bookID) => {
+  const getBook = async (bookID) => {
     const result = await request.get(`${baseUrl}/${bookID}`);
 
     // console.log(result);
@@ -44,7 +44,7 @@ export const bookServiceFactory = (token) => {
 
 return {
   getAll,
-    getOne,
+    getBook,
     createBook,
     editBook,
     deleteBook,

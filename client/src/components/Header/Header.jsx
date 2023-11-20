@@ -19,30 +19,22 @@ export default function Header() {
             <li className="active">
               <Link to="/">Home</Link>
             </li>
-            {!isAuthenticated && (
-              <>
                 <li>
                   <Link to="/catalog">Catalog</Link>
                 </li>
-              </>
-            )}
             {isAuthenticated && (
               <>
                 <li>
                   <Link to="/create">Create</Link>
                 </li>
                 <li>
-                  <Link to="/my-books">My Books</Link>
+                  <Link to="/profile">My Books</Link>
                 </li>
               </>
             )}
-            {!isAuthenticated && (
-              <>
-                <li>
-                  <Link to="/search">Search</Link>
-                </li>
-              </>
-            )}
+            <li>
+              <Link to="/search">Search</Link>
+            </li>
           </ul>
         </nav>
       </header>
