@@ -6,7 +6,7 @@ import { useForm } from "../../hooks/useForm";
 const Create = () => {
   const { onCreateBookSubmit } = useBookContext();
 
-  const { book, changeHandler, onSubmit, handleCheckboxChange } = useForm(
+  const { values: book, changeHandler, onSubmit, handleCheckboxChange } = useForm(
     {
       title: "",
       isbn: "",
