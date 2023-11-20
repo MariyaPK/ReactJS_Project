@@ -11,6 +11,7 @@ export default function Register() {
   const { values, changeHandler, onSubmit } = useForm(
     {
       email: "",
+      username: "",
       password: "",
       rePassword: "",
     },
@@ -18,16 +19,11 @@ export default function Register() {
   );
 
   return (
-    <section
-      id="register"
-      className={styles["register-section"]}
-      // style={{ backgroundImage: 'url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp")' }}
-    >
+    <section id="register" className={styles["register-section"]}>
       <div className={styles.container}>
         <h2>REGISTER</h2>
         <form className={styles["register-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
-            {/* <label htmlFor="register-email">Email:</label> */}
             <input
               type="text"
               name="email"
@@ -37,7 +33,15 @@ export default function Register() {
               onChange={changeHandler}
             />
 
-            {/* <label htmlFor="register-password">Password:</label> */}
+            <input
+              type="text"
+              name="username"
+              id="register-username"
+              placeholder="Username..."
+              value={values.username}
+              onChange={changeHandler}
+            />
+
             <input
               type="password"
               name="password"
@@ -47,7 +51,6 @@ export default function Register() {
               onChange={changeHandler}
             />
 
-            {/* <label htmlFor="register-rePassword">Repeat password:</label> */}
             <input
               type="password"
               name="rePassword"
@@ -59,6 +62,7 @@ export default function Register() {
           </div>
 
           <button type="submit">REGISTER</button>
+
           <p className={styles.message}>
             Already have an account? <Link to="/login">Login here</Link>
           </p>

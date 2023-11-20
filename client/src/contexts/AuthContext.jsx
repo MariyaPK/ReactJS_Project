@@ -8,6 +8,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useLocalStorage("auth", {});
+  const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
   const authService = authServiceFactory(auth.accessToken);
@@ -17,15 +18,17 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.login(data);
 
       setAuth(result);
+      setUsername(result.username);
 
       navigate("/");
     } catch (error) {
       console.log("Unsuccessful login!");
+      alert("Unsuccessful login. Please check your credentials.");
     }
   };
 
   const onRegisterSubmit = async (data) => {
-    if (!data.email || !data.password || !data.rePassword) {
+    if (!data.email || !data.username || !data.password || !data.rePassword) {
       alert("All fields are required!");
       return;
     }
@@ -38,10 +41,12 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.register(data);
 
       setAuth(result);
+      setUsername(result.username);
 
       navigate("/");
     } catch (error) {
-      throw new Error(error);
+      console.log("Unsuccessful registration!");
+      alert("Registration failed. Please try again.");
     }
   };
 
@@ -59,6 +64,7 @@ export const AuthProvider = ({ children }) => {
     token: auth.accessToken,
     userEmail: auth.email,
     isAuthenticated: !!auth.accessToken,
+    username,
   };
 
   return (
@@ -73,65 +79,3 @@ export const useAuthContext = () => {
 
   return context;
 };
-
-/*
-// ... (previous code)
-
-export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useLocalStorage("auth", {});
-  const [isLoading, setIsLoading] = useState(false);
-  const [userName, setUserName] = useState(""); // New state for the user's name
-  const navigate = useNavigate();
-
-  const authService = authServiceFactory(auth.accessToken);
-
-  const onLoginSubmit = async (data) => {
-    try {
-      setIsLoading(true);
-      const result = await authService.login(data);
-      setAuth(result);
-      setUserName(result.name); // Set the user's name upon successful login
-      navigate("/");
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Unsuccessful login. Please check your credentials.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const onRegisterSubmit = async (data) => {
-    // ... (previous code)
-
-    try {
-      setIsLoading(true);
-      const result = await authService.register(data);
-      setAuth(result);
-      setUserName(result.name); // Set the user's name upon successful registration
-      navigate("/");
-    } catch (error) {
-      console.error("Registration error:", error);
-      alert("Registration failed. Please try again.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  // ... (remaining code)
-
-  const contextValues = {
-    onLoginSubmit,
-    onRegisterSubmit,
-    onLogout,
-    userId: auth._id,
-    token: auth.accessToken,
-    userEmail: auth.email,
-    isAuthenticated: !!auth.accessToken,
-    userName, // Include the user's name in the context
-  };
-
-  return <AuthContext.Provider value={contextValues}>{children}</AuthContext.Provider>;
-};
-
-// ... (remaining code)
-*/

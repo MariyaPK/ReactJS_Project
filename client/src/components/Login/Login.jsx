@@ -1,6 +1,6 @@
-import styles from "./Login.module.css"; // Import the CSS module
-
+import styles from "./Login.module.css";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 import { AuthContext } from "../../contexts/AuthContext";
 import { useForm } from "../../hooks/useForm";
@@ -21,16 +21,11 @@ export default function Login() {
   );
 
   return (
-    <section
-      id="login"
-      className={styles["login-section"]}
-      // style={{ backgroundImage: 'url("https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp")' }}
-    >
+    <section id="login" className={styles["login-section"]}>
       <div className={styles.container}>
         <h2>LOGIN</h2>
         <form className={styles["login-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
-            {/* <label htmlFor="login-email">Email:</label> */}
             <input
               type="text"
               name={LoginFormKeys.Email}
@@ -40,7 +35,6 @@ export default function Login() {
               onChange={changeHandler}
             />
 
-            {/* <label htmlFor="login-password">Password:</label> */}
             <input
               type="password"
               id="login-password"
@@ -52,6 +46,7 @@ export default function Login() {
           </div>
 
           <button type="submit">LOGIN</button>
+
           <p className={styles.message}>
             Not registered? <Link to="/register">Register here</Link>
           </p>
