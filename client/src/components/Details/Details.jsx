@@ -80,7 +80,7 @@ export default function Details() {
             <span> Likes: </span>
           </p>
         </article>
-        {isAuthenticated && !isOwner && (
+        {(isAuthenticated && isOwner) && (
           <>
             <Link to={`/details/${bookID}/edit`}>
               <button type="submit">Edit</button>
@@ -106,11 +106,13 @@ export default function Details() {
       </p>
     )}
   </div>
+  {isAuthenticated &&
   <div className={styles.comments}>
     <h3>Comments: </h3>
     <p>User: </p>
     <p>Comment</p>
   </div>
+}
 </section>
   );
 }
