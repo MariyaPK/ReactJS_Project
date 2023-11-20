@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext";
 
 export default function AuthNav() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated, username } = useContext(AuthContext);
 
   return (
     <header className="wrapper row0">
@@ -39,7 +39,7 @@ export default function AuthNav() {
             {isAuthenticated && (
               <>
               <li>
-                <span>Hello!</span>
+                <span>Hello, {username} !</span>
               </li>
               <li>
                 <Link to="/logout">Logout</Link>
