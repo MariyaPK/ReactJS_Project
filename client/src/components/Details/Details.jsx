@@ -13,6 +13,7 @@ import { useBookContext } from "../../contexts/BookContext";
 
 import CommentForm from "../Comments/CommentForm";
 import Comments from "../Comments/Comments";
+import Likes from "../Likes/Likes";
 
 export default function Details() {
   const { bookID } = useParams();
@@ -100,9 +101,6 @@ export default function Details() {
               </button>
             )}
           </p>
-          <p>
-            <span> Likes: </span>
-          </p>
         </article>
         {isOwner && (
           <>
@@ -116,16 +114,17 @@ export default function Details() {
         )}
         {isAuthenticated ? (
           <>
-            <button type="button">Like</button>
+            {/* <button type="button">Like</button> */}
+            <Likes />
             <div className={styles["comment-area"]}>
               <CommentForm onCommentSubmit={onCommentSubmit} />
             </div>
             <Comments book={book} />
           </>
         ) : (
-            <p className="container">
-              <Link to="/login">Sign in to like and comment</Link>
-            </p>
+          <p className="container">
+            <Link to="/login">Sign in to like and comment</Link>
+          </p>
         )}
       </div>
     </section>
