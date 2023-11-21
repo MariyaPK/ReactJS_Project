@@ -1,14 +1,20 @@
 import styles from "./Edit.module.css";
 
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import * as bookService from "../../services/bookService";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { useBookContext } from "../../contexts/BookContext";
+
+import { useForm } from "../../hooks/useForm";
+import { useService } from "../../hooks/useService";
+import { bookServiceFactory } from "../../services/bookService";
 
 export default function Edit() {
+  const { onBookEditSubmit } = useBookContext();
   const { bookID } = useParams();
-  const navigate = useNavigate();
+  const bookService = useService(bookServiceFactory);
 
-  const [book, setBook] = useState({
+  const { values: book, changeHandler, onSubmit, changeValues, handleCheckboxChange } = useForm({
     title: "",
     isbn: "",
     author: "",
@@ -16,69 +22,32 @@ export default function Edit() {
     genre: [],
     publishYear: "",
     description: "",
-  });
+  }, onBookEditSubmit);
 
-  console.log(book);
+  // console.log(book);
 
   useEffect(() => {
-    // Fetch the existing book details when the component mounts
-    bookService.getOne(bookID).then((result) => {
-      setBook(result);
+    bookService.getBook(bookID)
+    .then(result => { 
+      changeValues(result)
     });
   }, [bookID]);
-
-  const onChangeHandler = (e) => {
-    const { name, value, type, checked } = e.target;
-
-    // Ensure that book.genre is always an array
-    const currentGenres = Array.isArray(book.genre) ? book.genre : [];
-
-    // Handle checkboxes
-    if (type === "checkbox") {
-      const updatedGenres = checked ? [...currentGenres, value] : currentGenres.filter((genre) => genre !== value);
-
-      setBook((book) => ({
-        ...book,
-        [name]: updatedGenres,
-      }));
-    } else {
-      setBook((book) => ({
-        ...book,
-        [name]: type === "number" ? Number(value) : value,
-      }));
-    }
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-
-    bookService
-      .edit(bookID, book)
-      .then(() => {
-        navigate(`/details/${bookID}`);
-      })
-      .catch((error) => {
-        console.error("Error updating book:", error);
-      });
-
-      console.log('Form submitted!', e);
-  };
 
   return (
     <section id="edit" className={styles.edit}>
       <div className={`${styles.form} form`}>
         <h2>EDIT</h2>
-        <form className={styles["edit-form"]} onSubmit={onSubmitHandler}>
-          <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={onChangeHandler} />
-          <input type="text" name="isbn" id="isbn" placeholder="ISBN" value={book.isbn} onChange={onChangeHandler} />
-          <input type="text" name="author" id="author" placeholder="Author" value={book.author} onChange={onChangeHandler} />
+        <form className={styles["edit-form"]} onSubmit={onSubmit}>
+          <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={changeHandler} />
+          <input type="text" name="isbn" id="isbn" placeholder="ISBN" value={book.isbn} onChange={changeHandler} />
+          <input type="text" name="author" id="author" placeholder="Author" value={book.author} onChange={changeHandler} />
           <input
             type="text"
             name="imageUrl"
             id="cover-image"
             placeholder="Cover"
             value={book.imageUrl}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
           />
           <div className={styles.genre}>
             <label>
@@ -87,7 +56,7 @@ export default function Edit() {
                 name="genre"
                 value="Comics"
                 checked={book.genre?.includes("Comics") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Comics
             </label>
@@ -97,7 +66,7 @@ export default function Edit() {
                 name="genre"
                 value="Cookbooks"
                 checked={book.genre?.includes("Cookbooks") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Cookbooks
             </label>
@@ -107,7 +76,7 @@ export default function Edit() {
                 name="genre"
                 value="Crime"
                 checked={book.genre?.includes("Crime") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Crime
             </label>
@@ -117,7 +86,7 @@ export default function Edit() {
                 name="genre"
                 value="Fantasy"
                 checked={book.genre?.includes("Fantasy") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Fantasy
             </label>
@@ -127,7 +96,7 @@ export default function Edit() {
                 name="genre"
                 value="Fiction"
                 checked={book.genre?.includes("Fiction") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Fiction
             </label>
@@ -137,7 +106,7 @@ export default function Edit() {
                 name="genre"
                 value="History"
                 checked={book.genre?.includes("History") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               History
             </label>
@@ -147,7 +116,7 @@ export default function Edit() {
                 name="genre"
                 value="Humor and comedy"
                 checked={book.genre?.includes("Humor and comedy") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Humor and comedy
             </label>
@@ -157,7 +126,7 @@ export default function Edit() {
                 name="genre"
                 value="Mystery"
                 checked={book.genre?.includes("Mystery") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Mystery
             </label>
@@ -167,7 +136,7 @@ export default function Edit() {
                 name="genre"
                 value="Science fiction"
                 checked={book.genre?.includes("Science fiction") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Science fiction
             </label>
@@ -177,7 +146,7 @@ export default function Edit() {
                 name="genre"
                 value="Travel"
                 checked={book.genre?.includes("Travel") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Travel
             </label>
@@ -187,7 +156,7 @@ export default function Edit() {
                 name="genre"
                 value="Other"
                 checked={book.genre?.includes("Other") ?? false}
-                onChange={onChangeHandler}
+                onChange={handleCheckboxChange}
               />
               Other
             </label>
@@ -198,7 +167,7 @@ export default function Edit() {
             id="publish-year"
             placeholder="Published year"
             value={book.publishYear}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
           />
           <textarea
             id="book-description"
@@ -207,10 +176,10 @@ export default function Edit() {
             rows="5"
             cols="100"
             value={book.description}
-            onChange={onChangeHandler}
+            onChange={changeHandler}
           ></textarea>
 
-          <button type="submit" >Edit</button>
+          <button type="submit">Edit</button>
         </form>
       </div>
     </section>

@@ -14,12 +14,13 @@ export const BookProvider = ({ children }) => {
     bookService.getAll().then((result) => {
       setBooks(result);
     });
-  }, [bookService]);
+  }, []);
 
   const onCreateBookSubmit = async (data) => {
     const newBook = await bookService.createBook(data);
 
     setBooks((state) => [...state, newBook]);
+    console.log(setBooks(newBook));
 
     navigate("/catalog");
   };

@@ -1,6 +1,6 @@
 import { requestFactory } from "./requester";
 
-const baseUrl = "http://localhost:3030/jsonstore/books";
+const baseUrl = "http://localhost:3030/data/books";
 
 export const bookServiceFactory = (token) => {
   const request = requestFactory(token);
@@ -38,16 +38,20 @@ export const bookServiceFactory = (token) => {
   const deleteBook = (bookID) => request.delete(`${baseUrl}/${bookID}`);
 
   const getUserBooks = async (userId) => {
-    const books = await request.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`);
-    return books;
-};
+    try {
+      const books = await request.get(`${baseUrl}?where=_ownerId%3D%22${userId}%22`);
+      return books;
+    } catch (error) {
+      console.error("Error fetching user books:", error);
+    }
+  };
 
-return {
-  getAll,
+  return {
+    getAll,
     getBook,
     createBook,
     editBook,
     deleteBook,
-    getUserBooks
-};
+    getUserBooks,
+  };
 };
