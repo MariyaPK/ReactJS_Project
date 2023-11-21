@@ -7,7 +7,12 @@ import { authServiceFactory } from "../services/authService";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useLocalStorage("auth", {});
+  const [auth, setAuth] = useState(() =>{
+    localStorage.removeItem('accessToken');
+
+    return {};
+  });
+
   const [username, setUsername] = useState("");
   const navigate = useNavigate();
 
@@ -20,6 +25,8 @@ export const AuthProvider = ({ children }) => {
       setAuth(result);
       setUsername(result.username);
 
+      localStorage.setItem('accessToken', result.accessToken);
+      
       navigate("/");
     } catch (error) {
       console.log("Unsuccessful login!");
@@ -42,6 +49,8 @@ export const AuthProvider = ({ children }) => {
 
       setAuth(result);
       setUsername(result.username);
+      
+      localStorage.setItem('accessToken', result.accessToken);
 
       navigate("/");
     } catch (error) {
@@ -54,6 +63,9 @@ export const AuthProvider = ({ children }) => {
     await authService.logout();
 
     setAuth({});
+
+    localStorage.removeItem('accessToken');
+
   };
 
   const contextValues = {
@@ -64,7 +76,7 @@ export const AuthProvider = ({ children }) => {
     token: auth.accessToken,
     userEmail: auth.email,
     isAuthenticated: !!auth.accessToken,
-    username,
+    username: auth.username,
   };
 
   return (
