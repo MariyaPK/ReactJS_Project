@@ -1,34 +1,51 @@
 import styles from "./Details.module.css";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useReducer } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 
 import { bookServiceFactory } from "../../services/bookService";
 import { useService } from "../../hooks/useService";
+import { bookReducer } from "../../reducers/bookReducer";
+import * as commentService from "../../services/commentService";
 
 import { useAuthContext } from "../../contexts/AuthContext";
 import { useBookContext } from "../../contexts/BookContext";
 
+import CommentForm from "../Comments/CommentForm";
+import Comments from "../Comments/Comments";
+
 export default function Details() {
   const { bookID } = useParams();
-  const { userId, isAuthenticated, userEmail } = useAuthContext();
+  const { userId, isAuthenticated, username } = useAuthContext();
   const { deleteBook } = useBookContext();
   const navigate = useNavigate();
-  const [book, setBook] = useState({});
+  const [book, dispatch] = useReducer(bookReducer, {});
   const bookService = useService(bookServiceFactory);
 
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
-    Promise.all([bookService.getBook(bookID)])
-      .then(([bookData]) => {
+    // console.log('Details Component Book:', bookID);
+    Promise.all([bookService.getBook(bookID), commentService.getAllComments(bookID)])
+      .then(([bookData, comments]) => {
         const bookState = {
           ...bookData,
+          comments,
         };
-        setBook(bookState);
+        dispatch({ type: "BOOKS_FETCH", payload: bookState });
       })
       .catch((error) => console.error("Error fetching book:", error));
   }, [bookID]);
+
+  const onCommentSubmit = async (userComment) => {
+    const response = await commentService.addComment(bookID, userComment.comment);
+
+    dispatch({
+      type: "COMMENT_ADD",
+      payload: response,
+      username,
+    });
+  };
 
   const isOwner = book._ownerId === userId;
 
@@ -42,6 +59,10 @@ export default function Details() {
       navigate("/catalog");
     }
   };
+
+  // useEffect(() => {
+  //   console.log('Details Component Book (State):', book);
+  // }, [book]);
 
   return (
     <section className={styles.details}>
@@ -57,6 +78,9 @@ export default function Details() {
           </p>
           <p>
             <span>Author: </span> {book.author}
+          </p>
+          <p>
+            <span>Genres: </span> {book.genre}
           </p>
           <p>
             <span>Publish year: </span>
@@ -80,9 +104,9 @@ export default function Details() {
             <span> Likes: </span>
           </p>
         </article>
-        {(isAuthenticated && isOwner) && (
+        {isOwner && (
           <>
-            <Link to={`/details/${bookID}/edit`}>
+            <Link to={`/details/edit/${bookID}`}>
               <button type="submit">Edit</button>
             </Link>
             <button type="submit" onClick={deleteClickHandler}>
@@ -90,29 +114,20 @@ export default function Details() {
             </button>
           </>
         )}
- {isAuthenticated ? (
-      <>
-        <button type="button">Like</button>
-        <button type="button">Comment</button>
-
-        <div className={styles["comment-area"]}>
-          <textarea id="comment-area" name="comment" placeholder="Your comment" rows="3" cols="40"></textarea>
-          <button type="button">Add comment</button>
-        </div>
-      </>
-    ) : (
-      <p className="container">
-        <Link to="/login">Sign in to like and comment</Link>
-      </p>
-    )}
-  </div>
-  {isAuthenticated &&
-  <div className={styles.comments}>
-    <h3>Comments: </h3>
-    <p>User: </p>
-    <p>Comment</p>
-  </div>
-}
-</section>
+        {isAuthenticated ? (
+          <>
+            <button type="button">Like</button>
+            <div className={styles["comment-area"]}>
+              <CommentForm onCommentSubmit={onCommentSubmit} />
+            </div>
+            <Comments book={book} />
+          </>
+        ) : (
+            <p className="container">
+              <Link to="/login">Sign in to like and comment</Link>
+            </p>
+        )}
+      </div>
+    </section>
   );
 }
