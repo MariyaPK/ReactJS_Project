@@ -102,7 +102,7 @@ export default function Details() {
             )}
           </p>
         </article>
-        {isOwner && (
+        {(isAuthenticated && isOwner) && (
           <>
             <Link to={`/details/edit/${bookID}`}>
               <button type="submit">Edit</button>
