@@ -8,16 +8,21 @@ export const request = async (method, url, data) => {
       options.headers = {
         "Content-Type": "application/json",
       };
+
       options.body = JSON.stringify(data);
     }
   }
-  const token = localStorage.getItem("accessToken");
 
+  const token = localStorage.getItem("auth");
   if (token) {
-    options.headers = {
-      ...options.headers,
-      "X-Authorization": token,
-    };
+    const auth = JSON.parse(token);
+
+    if (auth.accessToken) {
+      options.headers = {
+        ...options.headers,
+        "X-Authorization": auth.accessToken,
+      };
+    }
   }
 
   const response = await fetch(url, options);
@@ -34,6 +39,7 @@ export const request = async (method, url, data) => {
     }
 
     return result;
+    
   } catch (error) {
     return {};
   }

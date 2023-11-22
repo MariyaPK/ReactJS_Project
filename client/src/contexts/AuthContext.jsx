@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
@@ -7,13 +7,7 @@ import { authServiceFactory } from "../services/authService";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(() =>{
-    localStorage.removeItem('accessToken');
-
-    return {};
-  });
-
-  const [username, setUsername] = useState("");
+  const [auth, setAuth] = useLocalStorage("auth", {});
   const navigate = useNavigate();
 
   const authService = authServiceFactory(auth.accessToken);
@@ -23,10 +17,7 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.login(data);
 
       setAuth(result);
-      setUsername(result.username);
 
-      localStorage.setItem('accessToken', result.accessToken);
-      
       navigate("/");
     } catch (error) {
       console.log("Unsuccessful login!");
@@ -48,9 +39,6 @@ export const AuthProvider = ({ children }) => {
       const result = await authService.register(data);
 
       setAuth(result);
-      setUsername(result.username);
-      
-      localStorage.setItem('accessToken', result.accessToken);
 
       navigate("/");
     } catch (error) {
@@ -63,9 +51,6 @@ export const AuthProvider = ({ children }) => {
     await authService.logout();
 
     setAuth({});
-
-    localStorage.removeItem('accessToken');
-
   };
 
   const contextValues = {
