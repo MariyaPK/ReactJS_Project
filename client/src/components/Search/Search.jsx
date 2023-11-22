@@ -1,71 +1,84 @@
-import { useState, useEffect } from "react";
-import styles from "./Search.module.css";
-import * as bookService from "../../services/bookService";
+import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
-export default function Search() {
-  const [searchBook, setSearchBook] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
-  const [allBooks, setAllBooks] = useState([]);
+import { bookServiceFactory } from "../../services/bookService.js";
+import CatalogItem from "../../components/Catalog/CatalogItem";
 
-  useEffect(() => {
-    // Fetch all books initially
-    bookService.getAll().then((result) => {
-      setAllBooks(result);
-    });
-  }, []); // Empty dependency array means this effect runs once after the initial render
+export default function Search () {
+  const bookService = bookServiceFactory();
+  
+  const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
+  const [query, setQuery] = useState("");
+  const [books, setBooks] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [selectedBook, setSelectedBook] = useState(null);
+  const searchRef = useRef(null);
 
-  const handleSearch = (e) => {
-    e.preventDefault();
+  const filteredSuggestions = books?.filter((book) => {
+    const isTitleString = book.title && typeof book.title === "string";
+    const includesQuery = isTitleString && book.title.toLowerCase().includes(query.trim().toLowerCase());
+  
+    return includesQuery;
+  });
 
-    const searchBookLower = searchBook.toLowerCase();
-
-    const results = allBooks.filter(
-      (book) =>
-        book.title.toLowerCase().includes(searchBookLower) ||
-        book.author.toLowerCase().includes(searchBookLower)
-    );
-
-    setSearchResults(results);
+  const handleQuery = (e) => {
+    const inputValue = e.target.value;
+    setQuery(inputValue);
+    setShowSuggestions(inputValue.length > 0);
   };
 
+  const onSearch = () => {
+    // Handle search logic, if needed
+  };
+
+  const onSuggestionClick = (value, book) => {
+    setQuery(value);
+    setShowSuggestions(false);
+    setSelectedBook(book);
+    if (searchRef.current) {
+      searchRef.current.blur();
+    }
+  };
+
+  useEffect(() => {
+    bookService.getAll().then((data) => setBooks(data));
+  }, []);
+
   return (
-    <section className={styles.search}>
-      <section className={styles["search-form"]}>
-        <h2>Search Books</h2>
-
-        <form className={styles.form} onSubmit={handleSearch}>
-          <input
-            type="text"
-            name="search"
-            placeholder="Search for books..."
-            value={searchBook}
-            onChange={(e) => setSearchBook(e.target.value)}
-          />
-          <button type="submit">SEARCH</button>
-        </form>
-
-        <h2>Results:</h2>
-
-        <div id="search-container">
-          <ul className={styles["book-wrapper"]}>
-            {searchResults.map((book) => (
-              <li key={book.id} className={styles.bookCard}>
-                <img src={book.imageUrl} height="200px" alt={book.title} />
-                <div className={styles.bookDetails}>
-                  <h3>{book.title}</h3>
-                  <p>
-                    <strong>Author: </strong>
-                    <span className={styles.author}>{book.author}</span>
-                  </p>
-                  <a className={styles["details-btn"]} href={`/details/${book.id}`}>
-                    Details
-                  </a>
-                </div>
-              </li>
-            ))}
-          </ul>
+    <form onSubmit={handleSubmit(onSearch)}>
+      <input
+        type="text"
+        {...register("query")}
+        className="search-form"
+        placeholder="Search"
+        value={query}
+        autoComplete="off"
+        onChange={handleQuery}
+        ref={searchRef}
+      />
+      {showSuggestions && filteredSuggestions.length > 0 && (
+        <div className="suggestions">
+          {filteredSuggestions.map((suggestion) => (
+            <div
+              className="suggestion"
+              key={suggestion._id}
+              onClick={() => onSuggestionClick(suggestion.title, suggestion)}
+            >
+              {suggestion.title}
+            </div>
+          ))}
         </div>
-      </section>
-    </section>
+      )}
+      {selectedBook && (
+        <div className="selected-book-card">
+          <h2>{selectedBook.title}</h2>
+          <img src={selectedBook.imageUrl} alt={selectedBook.title} />
+          <button onClick={() => navigate(`/details/${selectedBook._id}`)}>Details</button>
+        </div>
+      )}
+    </form>
   );
 }
+
