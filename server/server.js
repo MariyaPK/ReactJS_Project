@@ -1379,8 +1379,23 @@
         genre: ["History"],
       },
     },
-    comments: {},
-    likes: {}
+    comments: {[
+      {
+          "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+          "bookID": "f710d761-6a48-4771-ba00-bf5d48e90189",
+          "comment": "Love it!",
+          "_createdOn": 1700669985249,
+          "_id": "f73221ea-3d37-428a-bb23-a6c9cfe87ca6"
+      }
+  ]},
+    likes: {[
+      {
+          "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+          "userId": "35c62d76-8152-4626-8712-eeb96381bea8",
+          "_createdOn": 1700669811560,
+          "_id": "314e9a01-06d9-48e8-ba80-90403316641a"
+      }
+  ]}
   };
   var rules$1 = {
     users: {
