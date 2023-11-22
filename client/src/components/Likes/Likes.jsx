@@ -8,7 +8,7 @@ import { useAuthContext } from "../../contexts/AuthContext";
 
 export default function Likes() {
   const { userId, isAuthenticated } = useAuthContext();
-  const { photoId: bookID } = useParams();
+  const { bookID } = useParams();
 
   const [like, setLike] = useState([]);
   const [isLiked, setIsLiked] = useState(false);
