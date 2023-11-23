@@ -29,6 +29,7 @@ export const BookProvider = ({ children }) => {
     const result = await bookService.editBook(bookValues._id, bookValues);
 
     setBooks((state) => state.map((x) => (x._id === bookValues._id ? result : x)));
+    console.log("onBookEditSubmit - BookContext")
 
     navigate(`/catalog/${bookValues._id}`);
   };
@@ -39,6 +40,11 @@ export const BookProvider = ({ children }) => {
 
   const getBook = (bookID) => {
     return books.find((book) => book._id === bookID);
+  };
+
+  const getRecentlyAddedBooks = (limit) => {
+    const sortedBooks = [...books].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    return sortedBooks.slice(0, limit);
   };
 
   const getBooksByUserId = (userId) => {
@@ -59,6 +65,7 @@ export const BookProvider = ({ children }) => {
     onBookEditSubmit,
     deleteBook,
     getBook,
+    recentlyAddedBooks: getRecentlyAddedBooks(5),
     getBooksByUserId,
     getLikedBooksByUserId,
     getCommentedBooksByUserId,
