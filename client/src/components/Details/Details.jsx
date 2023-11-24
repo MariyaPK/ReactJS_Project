@@ -14,6 +14,7 @@ import { useBookContext } from "../../contexts/BookContext";
 import CommentForm from "../Comments/CommentForm";
 import Comments from "../Comments/Comments";
 import Likes from "../Likes/Likes";
+import BookRating from "../BookRating/BookRating"
 
 export default function Details() {
   const { bookID } = useParams();
@@ -114,8 +115,8 @@ export default function Details() {
         )}
         {isAuthenticated ? (
           <>
-            {/* <button type="button">Like</button> */}
             <Likes />
+            <BookRating />
             <div className={styles["comment-area"]}>
               <CommentForm onCommentSubmit={onCommentSubmit} />
             </div>

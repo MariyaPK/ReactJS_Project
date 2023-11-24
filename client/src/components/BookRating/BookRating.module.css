@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: left;
+  font-size: 30px;
+}
+
+.radio {
+  display: none;
+}
+
+.rating {
+  cursor: pointer;
+}
