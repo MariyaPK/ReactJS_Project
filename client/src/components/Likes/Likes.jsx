@@ -21,7 +21,6 @@ export default function Likes() {
 
   const onLikeClick = () => {
     const currentLike = like.find((x) => x._ownerId === userId);
-    
 
     if (currentLike) {
       setLike((state) => state.filter((x) => x._id !== currentLike._id));
@@ -43,7 +42,7 @@ export default function Likes() {
         </h5>
         {isAuthenticated && (
           <span className={isLiked ? "liked" : "disliked"} onClick={onLikeClick}>
-             <i id={styles["heart"]} className="fa fa-heart"></i>
+            <i id={styles["heart"]} className="fa fa-heart"></i>
           </span>
         )}
       </div>

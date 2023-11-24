@@ -10,7 +10,7 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import RouteGuard from "./components/RouteGuard/RouteGuard";
-import Owner from "./components/Owner/Owner";
+// import Owner from "./components/Owner/Owner";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Details from "./components/Details/Details";
@@ -18,7 +18,7 @@ import Edit from "./components/Edit/Edit";
 import NotFound from "./components/NotFound/NotFound";
 import Search from "./components/Search/Search";
 import Loading from "./components/Loading/Loading";
-import UserProfile from "./components/UserProfile/UserProfile"
+import UserProfile from "./components/UserProfile/UserProfile";
 import Footer from "./components/Footer/Footer";
 import { AuthProvider } from "./contexts/AuthContext";
 import { BookProvider } from "./contexts/BookContext";
@@ -49,22 +49,14 @@ function App() {
 
               <Route element={<RouteGuard />}>
                 <Route path="/create" element={<Create />} />
-                <Route
-                  path="/details/edit/:bookID"
-                  element={
-                    <Owner>
-                      <Edit />
-                    </Owner>
-                  }
-                />
+                <Route path="/details//edit/:bookID" element={<Edit />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
 
               <Route path="/404" element={<NotFound />} />
               <Route path="*" element={<NotFound />} />
-              <Route path='/profile' element={<UserProfile/>} />
+              <Route path="/profile" element={<UserProfile />} />
               <Route path="/search" element={<Search />} />
-
             </Routes>
           </main>
         </BookProvider>

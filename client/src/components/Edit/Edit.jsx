@@ -35,7 +35,7 @@ export default function Edit() {
 
   return (
     <section id="edit" className={styles.edit}>
-      <div className={`${styles.form} form`}>
+      <div className={`${styles.form}`}>
         <h2>EDIT</h2>
         <form className={styles["edit-form"]} onSubmit={onSubmit}>
           <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={changeHandler} />

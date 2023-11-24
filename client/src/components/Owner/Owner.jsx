@@ -17,10 +17,8 @@ export default function Owner() {
     });
   }, [userId]);
 
-
-
   return (
-    <div className="portfolio-text">
+    <div className="booksOwnerCard">
       <div className="container-fluid pt-10">
         <div className="row justify-content-md-center ">
           <div className="col-md-10 col-sm-12">

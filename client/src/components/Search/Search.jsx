@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
 import { bookServiceFactory } from "../../services/bookService.js";
-import CatalogItem from "../../components/Catalog/CatalogItem";
 
 export default function Search () {
   const bookService = bookServiceFactory();
@@ -30,7 +29,6 @@ export default function Search () {
   };
 
   const onSearch = () => {
-    // Handle search logic, if needed
   };
 
   const onSuggestionClick = (value, book) => {

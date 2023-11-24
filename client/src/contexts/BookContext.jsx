@@ -47,17 +47,6 @@ export const BookProvider = ({ children }) => {
     return sortedBooks.slice(0, limit);
   };
 
-  const getBooksByUserId = (userId) => {
-    return books.filter((book) => book.userId === userId);
-  };
-
-  const getLikedBooksByUserId = (userId) => {
-    return books.filter((book) => book.likes.includes(userId));
-  };
-
-  const getCommentedBooksByUserId = (userId) => {
-    return books.filter((book) => book.comments.some((comment) => comment.userId === userId));
-  };
 
   const contextValues = {
     books,
@@ -66,9 +55,6 @@ export const BookProvider = ({ children }) => {
     deleteBook,
     getBook,
     recentlyAddedBooks: getRecentlyAddedBooks(5),
-    getBooksByUserId,
-    getLikedBooksByUserId,
-    getCommentedBooksByUserId,
   };
 
   return <BookContext.Provider value={contextValues}>{children}</BookContext.Provider>;
