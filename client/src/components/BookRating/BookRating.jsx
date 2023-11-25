@@ -17,17 +17,22 @@ export default function Rate() {
 
   const handleRating = async (givenRating) => {
     try {
-        const result = await request.post(`${baseUrl}/rating`, {
-            bookID,
-            userId,
-            rating: givenRating,
-          });
+      if (givenRating === rate) {
+        givenRating = 0;
+      }
+
+      const result = await request.post(`${baseUrl}/rating`, {
+        bookID,
+        userId,
+        rating: givenRating,
+      });
+      console.log(bookID);
+      console.log(userId);
+      console.log(result);
 
       if (result.ok) {
         setRate(givenRating);
         alert(`You have successfully rated the book ${givenRating} stars!`);
-      } else {
-        alert("Error saving rating. Please try again.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -46,11 +51,11 @@ export default function Rate() {
               type="radio"
               value={givenRating}
               onClick={() => {
-                  handleRating(givenRating);
+                handleRating(givenRating);
               }}
             />
             <div className={styles.rating}>
-              <FaStar color={givenRating <= rate ? "000" : "rgb(192,192,192)"} />
+              <FaStar color={givenRating <= rate ? "000" : "rgb(192,110,110)"} />
             </div>
           </label>
         );

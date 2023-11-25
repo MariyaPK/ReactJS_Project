@@ -43,7 +43,7 @@ export const BookProvider = ({ children }) => {
   };
 
   const getRecentlyAddedBooks = (limit) => {
-    const sortedBooks = [...books].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    const sortedBooks = [...books].sort((a, b) => new Date(b._createdOn) - new Date(a._createdOn));
     return sortedBooks.slice(0, limit);
   };
 
