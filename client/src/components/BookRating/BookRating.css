@@ -1,14 +1,13 @@
 body {
   background-color: #eee;
 }
+container{
+  padding: 10px
+}
 
 div.stars {
   width: 270px;
   display: inline-block;
-}
-
-.mt-200 {
-  margin-top: 200px;
 }
 
 input.star {
