@@ -10,7 +10,8 @@ export default function Home() {
           <article>
             <p className="heading">Are you looking for mystery?</p>
             <h2 className="heading">
-              <span className="block">... or... </span> for a new fantasy world?
+              <span className="block">... or... </span>
+              <span className="block">  for a new fantasy world? </span>
             </h2>
             <footer>
               <Link to="/catalog">Seek our library &raquo;</Link>

@@ -21,7 +21,7 @@ export default function Edit() {
     imageUrl: "",
     genre: [],
     publishYear: "",
-    description: "",
+    summary: "",
   }, onBookEditSubmit);
 
   // console.log(book);
@@ -50,6 +50,26 @@ export default function Edit() {
             onChange={changeHandler}
           />
           <div className={styles.genre}>
+          <label>
+              <input
+                type="checkbox"
+                name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Biography") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Biography
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Classics") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Classics
+            </label>
             <label>
               <input
                 type="checkbox"
@@ -114,6 +134,16 @@ export default function Edit() {
               <input
                 type="checkbox"
                 name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Horror") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Horror
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="genre"
                 value="Humor and comedy"
                 checked={book.genre?.includes("Humor and comedy") ?? false}
                 onChange={handleCheckboxChange}
@@ -129,6 +159,26 @@ export default function Edit() {
                 onChange={handleCheckboxChange}
               />
               Mystery
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Poetry") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Poetry
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Romance") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Romance
             </label>
             <label>
               <input
@@ -154,6 +204,16 @@ export default function Edit() {
               <input
                 type="checkbox"
                 name="genre"
+                value="Comics"
+                checked={book.genre?.includes("Thriller") ?? false}
+                onChange={handleCheckboxChange}
+              />
+              Thriller
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="genre"
                 value="Other"
                 checked={book.genre?.includes("Other") ?? false}
                 onChange={handleCheckboxChange}
@@ -170,12 +230,12 @@ export default function Edit() {
             onChange={changeHandler}
           />
           <textarea
-            id="book-description"
-            name="description"
-            placeholder="Description"
+            name="summary"
+            id="book-summary"
+            placeholder="summary"
             rows="5"
             cols="100"
-            value={book.description}
+            value={book.summary}
             onChange={changeHandler}
           ></textarea>
 

@@ -10,7 +10,6 @@ import Register from "./components/Register/Register";
 import Login from "./components/Login/Login";
 import Logout from "./components/Logout/Logout";
 import RouteGuard from "./components/RouteGuard/RouteGuard";
-// import Owner from "./components/Owner/Owner";
 import Catalog from "./components/Catalog/Catalog";
 import Create from "./components/Create/Create";
 import Details from "./components/Details/Details";

@@ -1,6 +1,7 @@
 import styles from "./Catalog.module.css";
 
 import { useState, useEffect } from "react";
+
 import { useBookContext } from "../../contexts/BookContext";
 import CatalogItem from "./CatalogItem";
 import Loading from "../Loading/Loading";

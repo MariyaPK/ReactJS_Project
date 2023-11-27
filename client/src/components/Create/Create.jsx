@@ -3,7 +3,7 @@ import styles from "./Create.module.css";
 import { useBookContext } from "../../contexts/BookContext";
 import { useForm } from "../../hooks/useForm";
 
-const Create = () => {
+export default function Create () {
   const { onCreateBookSubmit } = useBookContext();
 
   const { values: book, changeHandler, onSubmit, handleCheckboxChange } = useForm(
@@ -14,7 +14,7 @@ const Create = () => {
       imageUrl: "",
       genre: [],
       publishYear: "",
-      description: "",
+      summary: "",
     },
     onCreateBookSubmit
   );
@@ -72,15 +72,21 @@ const Create = () => {
             <label>Genres</label>
             <div className={styles["checkbox-group"]}>
               {[
+                "Biography",
+                "Classics",
                 "Comics",
                 "Cookbooks",
                 "Crime",
                 "Fantasy",
                 "Fiction",
                 "History",
+                "Horror",
                 "Humor and comedy",
                 "Mystery",
+                "Poetry",
+                "Romance",
                 "Science fiction",
+                "Thriller",
                 "Travel",
                 "Other",
               ].map((genre) => (
@@ -108,13 +114,13 @@ const Create = () => {
             />
           </div>
           <div className={styles["form-group"]}>
-            <label htmlFor="book-description">Description</label>
+            <label htmlFor="book-summary">Summary</label>
             <textarea
-              value={book.description}
+              value={book.summary}
               onChange={changeHandler}
-              id="book-description"
-              name="description"
-              placeholder="Description"
+              name="summary"
+              id="book-summary"
+              placeholder="Summary"
               rows="5"
               cols="100"
             ></textarea>
@@ -125,6 +131,4 @@ const Create = () => {
       </div>
     </section>
   );
-};
-
-export default Create;
+}

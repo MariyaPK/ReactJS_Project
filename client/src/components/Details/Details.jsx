@@ -90,7 +90,7 @@ export default function Details() {
           </p>
           <p>
             <span>Summary: </span>
-            {showMore ? book.description : `${book.description?.slice(0, 100)}...`}
+            {showMore ? book.summary : `${book.summary?.slice(0, 100)}...`}
             {!showMore && (
               <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
                 Show More
