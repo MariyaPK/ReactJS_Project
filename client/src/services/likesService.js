@@ -21,16 +21,6 @@ export const addLike = async (bookID, userId) => {
   }
 };
 
-export const liked = async (bookID, userId) => {
-  try {
-    const result = await request.get(`${baseUrl}/likes?where=bookID%3D%22${bookID}%22%20and%20_ownerId%3D%22${userId}%22&count`);
-    console.log(result.data)
-    return result.data;
-  } catch (error) {
-    console.error('Error checking liked status:', error);
-  }
-};
-
 export const dislike = async (likeId, userId) => {
   try {
     const res = await request.delete(`${baseUrl}/likes/${likeId}?where=userId%3D%22${userId}%22`);

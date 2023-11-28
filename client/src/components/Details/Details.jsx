@@ -105,7 +105,7 @@ export default function Details() {
         </article>
         {(isAuthenticated && isOwner) && (
           <>
-            <Link to={`/details/edit/${bookID}`}>
+            <Link to={`/details/${bookID}/edit`}>
               <button type="submit">Edit</button>
             </Link>
             <button type="submit" onClick={deleteClickHandler}>

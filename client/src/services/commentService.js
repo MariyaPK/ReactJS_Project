@@ -1,20 +1,19 @@
-import { requestFactory } from './requester';
+import { requestFactory } from "./requester";
 
-const baseUrl = 'http://localhost:3030/data/comments';
+const baseUrl = "http://localhost:3030/data/comments";
 const request = requestFactory();
 
 export const getAllComments = async (bookID) => {
-    const searchQuery = encodeURIComponent(`bookID="${bookID}"`);
-    const relationQuery = encodeURIComponent(`author=_ownerId:users`);
-
-    const result = await request.get(`${baseUrl}?where=${searchQuery}&load=${relationQuery}`);
-    const comments = Object.values(result);
-
-    return comments;
+  const query = new URLSearchParams({
+    where: `bookID="${bookID}"`,
+    load: `author=_ownerId:users`,
+  });
+  const result = await request.get(`${baseUrl}?${query}`);
+  return result;
 };
 
 export const addComment = async (bookID, comment) => {
-    const result = await request.post(baseUrl, { bookID, comment });
+  const result = await request.post(baseUrl, { bookID, comment });
 
-    return result;
+  return result;
 };

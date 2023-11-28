@@ -48,7 +48,7 @@ function App() {
 
               <Route element={<RouteGuard />}>
                 <Route path="/create" element={<Create />} />
-                <Route path="/details//edit/:bookID" element={<Edit />} />
+                <Route path="/details/:bookID/edit" element={<Edit />} />
                 <Route path="/logout" element={<Logout />} />
               </Route>
 

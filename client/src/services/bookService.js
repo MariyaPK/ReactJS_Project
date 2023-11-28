@@ -9,7 +9,6 @@ export const bookServiceFactory = (token) => {
     try {
       const result = await request.get(baseUrl);
       const books = Object.values(result);
-      // console.log(books)
 
       return books;
     } catch (error) {
@@ -20,15 +19,11 @@ export const bookServiceFactory = (token) => {
   const createBook = async (bookData) => {
     const result = await request.post(baseUrl, bookData);
 
-    // console.log(result);
-
     return result;
   };
 
   const getBook = async (bookID) => {
     const result = await request.get(`${baseUrl}/${bookID}`);
-
-    // console.log(result);
 
     return result;
   };
