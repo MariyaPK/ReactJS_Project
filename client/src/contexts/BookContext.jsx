@@ -11,27 +11,47 @@ export const BookProvider = ({ children }) => {
   const bookService = bookServiceFactory();
 
   useEffect(() => {
-    bookService.getAll().then((result) => {
-      setBooks(result);
-    });
+    const sendBooks = async () => {
+      try {
+        const result = await bookService.getAll();
+        if (Array.isArray(result)) {
+          setBooks(result);
+        } else {
+          setBooks([]);
+        }
+      } catch (error) {
+        console.error("Error fetching books:", error);
+      }
+    };
+
+    sendBooks();
   }, []);
 
+  // triggers on books changes
+  useEffect(() => {
+    // console.log("Books:", books);
+  }, [books]);
+
   const onCreateBookSubmit = async (data) => {
-    const newBook = await bookService.createBook(data);
+    try {
+      const newBook = await bookService.createBook(data);
 
-    setBooks((state) => [...state, newBook]);
-    console.log(setBooks(newBook));
-
-    navigate("/catalog");
+     setBooks((state) => {
+        const updatedBooks = [...state, newBook];
+        navigate("/catalog");
+        return updatedBooks;
+      });
+    } catch (error) {
+      console.error("Error creating book:", error);
+    }
   };
 
   const onBookEditSubmit = async (bookValues) => {
     const result = await bookService.editBook(bookValues._id, bookValues);
 
     setBooks((state) => state.map((x) => (x._id === bookValues._id ? result : x)));
-    console.log("onBookEditSubmit - BookContext")
 
-    navigate(`/catalog/${bookValues._id}`);
+    navigate(`/details/${bookValues._id}`);
   };
 
   const deleteBook = (bookID) => {
@@ -41,12 +61,12 @@ export const BookProvider = ({ children }) => {
   const getBook = (bookID) => {
     return books.find((book) => book._id === bookID);
   };
-
   const getRecentlyAddedBooks = (limit) => {
     const sortedBooks = [...books].sort((a, b) => new Date(b._createdOn) - new Date(a._createdOn));
-    return sortedBooks.slice(0, limit);
-  };
+    const booksToShow = sortedBooks.slice(0, limit);
 
+    return booksToShow;
+  };
 
   const contextValues = {
     books,
