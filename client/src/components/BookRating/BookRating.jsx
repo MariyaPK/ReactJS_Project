@@ -6,44 +6,38 @@ import { useParams } from "react-router-dom";
 import * as rateService from "../../services/rateService";
 import { useAuthContext } from "../../contexts/AuthContext";
 
-export default function Rate () {
+export default function Rate() {
   const { bookID } = useParams();
   const { userId } = useAuthContext();
 
-  const [rate, setRate] = useState([]);
+  const [userRating, setUserRating] = useState(0);
   const [isRated, setIsRated] = useState(false);
 
   useEffect(() => {
-    rateService.rateBook(bookID, userId).then((rateResult) => {
-      setRate([rateResult]);
+    rateService.getRateBook(bookID, userId).then((rateResult) => {
+      setUserRating([rateResult]);
       setIsRated(true);
     });
   }, [bookID, userId]);
 
-  // useEffect(() => {
-  //   // Fetch the user's rating for the book
-  //   rateService.rateBook(bookID, userId).then((userRating) => {
-  //     if (userRating) {
-  //       setRate([userRating]);
-  //       setIsRated(true);
-  //     }
-  //   });
-  // }, [bookID, userId]);
-
   const handleRating = async (givenRating) => {
-    const currentRate = rate.find((x) => x._ownerId === userId);
+    const currentRate = userRating.find((x) => x._ownerId === userId);
+
+    console.log("rated");
+
     try {
-      if (givenRating === rate) {
+      if (givenRating === userRating) {
         givenRating = 0;
       }
 
-if (currentRate) {
-        setRate((state) => state.filter((x) => x._id !== currentRate._id));
+      if (currentRate) {
+        setUserRating((state) => state.filter((x) => x._id !== currentRate._id));
         setIsRated(false);
-        rateService.changeRate(currentRate._id, givenRating, userId, bookID);
+        rateService.changeRate(currentRate._id, givenRating, userId);
       } else {
-        rateService.rateBook(bookID, userId).then((result) => {
-          setRate((state) => [...state, result]);
+        rateService.addRate(bookID, userId, givenRating).then((result) => {
+          setUserRating((state) => [...state, result]);
+          console.log("Rating response:", result);
           setIsRated(true);
         });
       }
@@ -58,7 +52,14 @@ if (currentRate) {
     for (let i = numStars; i > 0; i--) {
       stars.push(
         <React.Fragment key={i}>
-          <input className={`star star-${i}`} id={`star-${i}`} type="radio" name="star" onClick={() => handleRating(i)} />
+          <input
+            className={`star star-${i}`}
+            id={`star-${i}`}
+            type="radio"
+            name="star"
+            onClick={() => handleRating(i)}
+            checked={i === userRating}
+          />
           <label className={`star star-${i}`} htmlFor={`star-${i}`}></label>
         </React.Fragment>
       );

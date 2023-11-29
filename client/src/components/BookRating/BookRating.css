@@ -1,9 +1,6 @@
 body {
   background-color: #eee;
 }
-container{
-  padding: 10px
-}
 
 div.stars {
   width: 270px;
@@ -44,7 +41,10 @@ label.star:hover {
 label.star:before {
   content: "\f006";
   font-family: FontAwesome;
+  transition: all 0.25s;
+
 }
+
 
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css);
 @import url(https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js);
