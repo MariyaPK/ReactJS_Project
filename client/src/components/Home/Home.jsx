@@ -5,17 +5,17 @@ import RecentlyAddedBooks from "../../components/RecentlyAdded/RecentlyAdded";
 export default function Home() {
   return (
     <>
-      <div className="wrapper bgded overlay" style={{ backgroundImage: 'url("/images/forHome.jpg")' }}>
-        <div id="pageintro" className="hoc clear">
+      <div className="wrapper bgded overlay" style={{ backgroundImage: 'url("/images/forHome4.jpg")' }}>
+        <div id="home" className="hoc clear">
           <article>
             <p className="heading">Are you looking for mystery?</p>
             <h2 className="heading">
               <span className="block">... or... </span>
               <span className="block">  for a new fantasy world? </span>
             </h2>
-            <footer>
+            <span>
               <Link to="/catalog">Seek our library &raquo;</Link>
-            </footer>
+            </span>
           </article>
         </div>
       </div>

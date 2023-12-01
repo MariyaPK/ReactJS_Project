@@ -10,16 +10,6 @@ File: Layout CSS
 
 @import url("/public/layout/styles/fontawesome-4.6.3.min.css");
 @import url("/public/layout/styles/framework.css");
-@import url("../src/assets/css/formTemplates.css");
-
-/* Rows
---------------------------------------------------------------------------------------------------------------- */
-.row0, .row0 a{}
-.row1, .row1 a{}
-.row2, .row2 a{}
-.row3, .row3 a{}
-.row4, .row4 a{}
-.row5, .row5 a{}
 
 
 /* Top Bar */
@@ -36,76 +26,25 @@ File: Layout CSS
 
 /* Header
 --------------------------------------------------------------------------------------------------------------- */
-#header{}
 
 #header #logo{margin-top:25px;}
 #header #logo *{margin:0; padding:0; line-height:1;}
 #header #logo h1{font-size:22px; font-variant:small-caps;}
 #header #logo p{font-size:12px; text-transform:lowercase;}
 
+#header #logo h1 a{color:inherit; background-color:inherit;}
 
-/* Page Intro
+/* HOME
 --------------------------------------------------------------------------------------------------------------- */
-#pageintro{padding:150px 0;}
+#home{padding:150px 0;}
 
-#pageintro article *{text-transform:uppercase;}
-#pageintro article .heading{margin:0 0 50px 0; padding:0; line-height:1; font-size:64px;}
-#pageintro article p:first-of-type{margin-bottom:20px; font-size:26px;}
-#pageintro article footer{margin-top:80px;}
-#pageintro article footer a{padding-bottom:5px; border-bottom:2px solid;}
+#home article *{text-transform:uppercase;}
+#home article .heading{margin:0 0 50px 0; padding:0; line-height:1; font-size:50px;}
+#home article p:first-of-type{margin-bottom:20px; font-size:26px;}
+#home article span{margin-top:40px;}
+#home article span a{padding-bottom:5px; border-bottom:2px solid;}
 
-
-/* Services
---------------------------------------------------------------------------------------------------------------- */
-#services{position:relative;}
-
-#services .table{}
-#services .table-cell{margin-top:-1px; padding:3%; border:1px solid; border-top:none;}
-
-#services article{text-align:center;}
-#services article *{margin:0; line-height:1;}
-#services article i{display:inline-block; width:50px; height:50px; line-height:48px; margin-bottom:20px; border:1px solid; text-align:center; font-size:24px;}
-#services article .heading{margin-bottom:10px; font-size:1.2rem;}
-#services article p{margin-bottom:10px; line-height:1.4;}
-
-
-/* Content Area
---------------------------------------------------------------------------------------------------------------- */
-.container{padding:80px 0;}
-
-/* Content */
-.container .content{}
-
-.cta > li:last-child{margin-bottom:0;}/* Used when elements stack in small viewports */
-.cta article{display:block; position:relative; min-height:80px; padding:0 0 0 70px;}
-.cta article::before, .cta article::after{display:table; content:"";}
-.cta article::after{clear:both;}
-.cta article *{margin:0; line-height:1;}
-.cta article i{display:block; position:absolute; top:0; left:0; width:50px; height:50px; line-height:48px; border:1px solid; text-align:center; font-size:24px;}
-.cta article .heading{margin-bottom:10px; font-size:1.2rem;}
-.cta article p{margin-bottom:10px; line-height:1.4;}
-
-/* Comments */
-#comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
-#comments li{margin:0 0 10px 0; padding:15px;}
-#comments .avatar{float:right; margin:0 0 10px 10px; padding:3px; border:1px solid;}
-#comments address{font-weight:bold;}
-#comments time{font-size:smaller;}
-#comments .comcont{display:block; margin:0; padding:0;}
-#comments .comcont p{margin:10px 5px 10px 0; padding:0;}
-
-#comments form{display:block; width:100%;}
-#comments input, #comments textarea{width:100%; padding:10px; border:1px solid;}
-#comments textarea{overflow:auto;}
-#comments div{margin-bottom:15px;}
-#comments input[type="submit"], #comments input[type="reset"]{display:inline-block; width:auto; min-width:150px; margin:0; padding:8px 5px; cursor:pointer;}
-
-/* Sidebar */
-.container .sidebar{}
-
-.sidebar .sdb_holder{margin-bottom:50px;}
-.sidebar .sdb_holder:last-child{margin-bottom:0;}
-
+#home article span a{color:inherit; border-color:inherit;}
 
 /* Footer
 --------------------------------------------------------------------------------------------------------------- */
@@ -115,8 +54,8 @@ File: Layout CSS
 #footer > ul:last-of-type{margin-bottom:40px;}
 #footer .faico a{border-radius:50%;}
 
-#footer #copyright{}
 #footer #copyright *{margin:0; padding:0;}
+#footer #copyright a{color:inherit; background-color:inherit;}
 
 
 /* Transition Fade
@@ -133,7 +72,6 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav .drop::after, #mainav li li .drop::after, #breadcrumb li a::after, .sidebar nav a::after{position:absolute; font-family:"FontAwesome"; font-size:10px; line-height:10px;}
 
 /* Top Navigation */
-#mainav{}
 #mainav ul.clear{margin-top:3px;}
 #mainav ul{text-transform:uppercase;}
 #mainav ul ul{z-index:9999; position:absolute; width:180px; text-transform:none;}
@@ -156,6 +94,13 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #mainav form select{width:100%; padding:5px; border:none;}
 #mainav form select option{margin:5px; padding:0; border:none;}
 
+#mainav li a{color:inherit;}
+#mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#B97D2D; background-color:inherit;}
+#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgba(0,0,0,.6); border-color:rgba(0,0,0,.6);}
+#mainav li li:hover > a, #mainav .active .active > a{color:#FFFFFF; background-color:#B97D2D;}
+#mainav form select{color:#FFFFFF; background-color:#413E3D;}
+
+
 /* Breadcrumb */
 #breadcrumb{padding:15px 0;}
 #breadcrumb ul{margin:0; padding:0; list-style:none; text-transform:uppercase;}
@@ -165,42 +110,8 @@ nav ul, nav ol{margin:0; padding:0; list-style:none;}
 #breadcrumb li:last-child a{margin:0; padding:0;}
 #breadcrumb li:last-child a::after{display:none;}
 
-/* Sidebar Navigation */
-.sidebar nav{display:block; width:100%;}
-.sidebar nav li{margin:0 0 3px 0; padding:0;}
-.sidebar nav a{display:block; position:relative; margin:0; padding:5px 10px 5px 15px; text-decoration:none; border:solid; border-width:0 0 1px 0;}
-.sidebar nav a::after{top:9px; left:5px; content:"\f101";}
-.sidebar nav ul ul a{padding-left:35px;}
-.sidebar nav ul ul a::after{left:25px;}
-.sidebar nav ul ul ul a{padding-left:55px;}
-.sidebar nav ul ul ul a::after{left:45px;}
-
-/* Pagination */
-.pagination{display:block; width:100%; text-align:center; clear:both;}
-.pagination li{display:inline-block; margin:0 2px 0 0;}
-.pagination li:last-child{margin-right:0;}
-.pagination a, .pagination strong{display:block; padding:8px 11px; border:1px solid; background-clip:padding-box; font-weight:normal;}
-
-/* Back to Top */
-#backtotop{z-index:999; display:inline-block; position:fixed; visibility:hidden; bottom:20px; right:20px; width:36px; height:36px; line-height:36px; font-size:16px; text-align:center; opacity:.2;}
-#backtotop i{display:block; width:100%; height:100%; line-height:inherit;}
-#backtotop.visible{visibility:visible; opacity:.5;}
-#backtotop:hover{opacity:1;}
-
-
-/* Tables
---------------------------------------------------------------------------------------------------------------- */
-table, th, td{border:1px solid; border-collapse:collapse; vertical-align:top;}
-table, th{table-layout:auto;}
-table{width:100%; margin-bottom:15px;}
-th, td{padding:5px 8px;}
-td{border-width:0 1px;}
-
-
-/* Gallery
-#gallery{display:block; width:100%; margin-bottom:50px;}
-#gallery figure figcaption{display:block; width:100%; clear:both;}
-#gallery li{margin-bottom:30px;} */
+#breadcrumb a{color:inherit; background-color:inherit;}
+#breadcrumb li:last-child a{color:#B97D2D;}
 
 
 /* Font Awesome Social Icons
@@ -220,13 +131,7 @@ td{border-width:0 1px;}
 .faicon-twitter:hover{background-color:#00ACEE;}
 .faicon-vk:hover{background-color:#4E658E;}
 
-
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-
+.faicon-heart:hover{background-color:#EA4C89;}
 
 /* Colours
 --------------------------------------------------------------------------------------------------------------- */
@@ -251,80 +156,19 @@ input:focus, textarea:focus, *:required:focus{border-color:#B97D2D;}
 .row4{color:#474747; background-color:#F7F7F7;}
 
 
-
-
-
-/* Header */
-#header #logo h1 a{color:inherit; background-color:inherit;}
-
-
-/* Page Intro */
-#pageintro article footer a{color:inherit; border-color:inherit;}
-
-
-/* Services */
-#services .table-cell{border-color:#D7D7D7;}
-#services article i{color:#B97D2D; border-color:#D7D7D7;}
-#services article:hover i{color:#FFFFFF; background-color:#B97D2D; border-color:#B97D2D;}
-
-
-/* Content Area */
-.cta article i{color:#B97D2D; border-color:#D7D7D7;}
-.cta article:hover i{color:#FFFFFF; background-color:#B97D2D; border-color:#B97D2D;}
-
-
-/* Footer */
-#footer #copyright a{color:inherit; background-color:inherit;}
-
-
-/* Navigation */
-#mainav li a{color:inherit;}
-#mainav .active a, #mainav a:hover, #mainav li:hover > a{color:#B97D2D; background-color:inherit;}
-#mainav li li a, #mainav .active li a{color:#FFFFFF; background-color:rgba(0,0,0,.6); border-color:rgba(0,0,0,.6);}
-#mainav li li:hover > a, #mainav .active .active > a{color:#FFFFFF; background-color:#B97D2D;}
-#mainav form select{color:#FFFFFF; background-color:#413E3D;}
-
-#breadcrumb a{color:inherit; background-color:inherit;}
-#breadcrumb li:last-child a{color:#B97D2D;}
-
-.container .sidebar nav a{color:inherit; border-color:#D7D7D7;}
-.container .sidebar nav a:hover{color:#B97D2D;}
-
-.pagination a, .pagination strong{border-color:#D7D7D7;}
-.pagination .current *{color:#FFFFFF; background-color:#B97D2D;}
-
-#backtotop{color:#FFFFFF; background-color:#B97D2D;}
-
-
-/* Tables + Comments */
-table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#D7D7D7;}
-#comments input:focus, #comments textarea:focus, #comments *:required:focus{border-color:#B97D2D;}
-th{color:#FFFFFF; background-color:#373737;}
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
-tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color:#F7F7F7;}
-table a, #comments a{background-color:inherit;}
-
-
-/* ------------------------------------------------------------------------------------------------------------ */
-/* ------------------------------------------------------------------------------------------------------------ */
-
 /* OTHER */
 
-/* Media Queries
---------------------------------------------------------------------------------------------------------------- */
+/* Media Queries */
 @-ms-viewport{width:device-width;}
 
 
-/* Max Wrapper Width - Laptop, Desktop etc.
---------------------------------------------------------------------------------------------------------------- */
+/* Max Wrapper Width - Laptop, Desktop etc. */
 @media screen and (min-width:978px){
 	.hoc{max-width:978px;}
 }
 
-
-/* Mobile Devices
---------------------------------------------------------------------------------------------------------------- */
-@media screen and (max-width:900px){
+/* Mobile Devices */
+ @media screen and (max-width:900px){
 	.hoc{max-width:90%;}
 
 	#navbar{}
@@ -359,8 +203,8 @@ table a, #comments a{background-color:inherit;}
 
 	#mainav form{margin-top:0;}
 
-	#pageintro article .heading{margin-bottom:30px; font-size:38px;}
-	#pageintro article p:first-of-type{margin-bottom:20px; font-size:18px;}
+	#home article .heading{margin-bottom:30px; font-size:38px;}
+	#home article p:first-of-type{margin-bottom:20px; font-size:18px;}
 
 	#services .table, #services .table-row, #services .table-cell{display:block; width:100%;}
 	#services .table-cell{padding:5%;}
@@ -380,4 +224,4 @@ table a, #comments a{background-color:inherit;}
 
 	.font-x2{font-size:1.4rem;}
 	.font-x3{font-size:1.6rem;}
-}
+} 
