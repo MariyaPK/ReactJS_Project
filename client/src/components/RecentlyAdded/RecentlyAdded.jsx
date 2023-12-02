@@ -1,24 +1,23 @@
-import styles from "./RecentlyAdded.module.css"
+import styles from "./RecentlyAdded.module.css";
 
 import { useNavigate } from "react-router-dom";
-
 
 import { useBookContext } from "../../contexts/BookContext";
 
 const BookCard = ({ book }) => {
   const navigate = useNavigate();
 
-    return (
-      <div className={styles["book-card"]}>
-        <img src={book.imageUrl} alt={book.title} className={styles["book-image"]} />
-        <div className={styles["book-details"]}>
-          <h3>{book.title}</h3>
-          <p>Author: {book.author}</p>
-          <button onClick={() => navigate(`/details/${book._id}`)}>Details</button>
-        </div>
+  return (
+    <div className={styles["book-card"]}>
+      <img src={book.imageUrl} alt={book.title} className={styles["book-image"]} />
+      <div className={styles["book-details"]}>
+        <h3>{book.title}</h3>
+        <p>Author: {book.author}</p>
+        <button onClick={() => navigate(`/details/${book._id}`)}>Details</button>
       </div>
-    );
-  };
+    </div>
+  );
+};
 
 export default function RecentlyAddedBooks({ limit }) {
   const { recentlyAddedBooks } = useBookContext();
@@ -29,7 +28,7 @@ export default function RecentlyAddedBooks({ limit }) {
   const booksToShow = recentlyAddedBooks.slice(0, limit);
 
   return (
-    <div>
+    <div className={styles["list-header"]}>
       <h2>Recently Added Books</h2>
       <div className={styles["book-list"]}>
         {booksToShow.map((book) => (
