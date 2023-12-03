@@ -1,0 +1,66 @@
+.background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#home {
+  padding: 70px 0;
+}
+
+#home article * {
+  text-transform: uppercase;
+  padding-bottom: 5px;
+}
+#home article .heading1 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  padding-left: 70px;
+  line-height: 1;
+  font-size: 50px;
+  font-family: "Ysabeau SC", serif;
+}
+#home article .heading2 {
+  margin: 0 0 50px 0;
+  color: rgb(103, 2, 2);
+  padding-left: 70px;
+  line-height: 1;
+  font-size: 50px;
+  font-family: "Nosifer", serif;
+}
+#home article p:first-of-type {
+  margin-bottom: 20px;
+  font-size: 26px;
+  color: white;
+}
+
+#home article .block1 {
+  margin: 0 800px 0 0;
+  color: rgb(255, 252, 252);
+  padding-right: 90px;
+  padding-bottom: 50px;
+  display: block;
+  font-family: "Ysabeau SC", serif;
+}
+#home article .block2 {
+  text-shadow: 0px 5px 8px white;
+  padding-bottom: 50px;
+  display: block;
+  font-size: 50px;
+  font-family: "Shalimar", seriF;
+  position: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: rgb(0, 0, 0);
+  width: 100%;
+  padding: 20px;
+}
+
+#home article h3 {
+  padding-left: 50px;
+  font-family: "Ysabeau SC", serif;
+  margin: 70px 0 0 0;
+}
+
+#home article h3 span a {
+  color: rgba(42, 32, 2, 0.745);
+}

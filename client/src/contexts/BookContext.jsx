@@ -74,7 +74,7 @@ export const BookProvider = ({ children }) => {
     onBookEditSubmit,
     deleteBook,
     getBook,
-    recentlyAddedBooks: getRecentlyAddedBooks(5),
+    recentlyAddedBooks: getRecentlyAddedBooks(4),
   };
 
   return <BookContext.Provider value={contextValues}>{children}</BookContext.Provider>;

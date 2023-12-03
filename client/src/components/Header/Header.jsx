@@ -12,7 +12,7 @@ export default function Header() {
           <h1>
             <Link to="/">The Book Hunt</Link>
           </h1>
-          <p>let the fun begin...</p>
+          <p>let the magic begin...</p>
         </div>
         <nav id="mainav" className="fl_right">
           <ul className="clear">

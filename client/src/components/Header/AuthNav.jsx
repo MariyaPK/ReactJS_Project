@@ -9,25 +9,13 @@ export default function AuthNav() {
   return (
     <header className="wrapper row0">
       <div id="navbar" className="hoc clear">
-        <div className="fl_left">
-          <ul className="nospace">
-            <li>
-              <i className="fa fa-phone"></i> +359 888 888 888
-            </li>
-            <li>
-              <i className="fa fa-envelope-o"></i> my@book.hunt
-            </li>
-          </ul>
-        </div>
         <div className="fl_right">
           <ul className="nospace">
-            <li>
-              <Link to="/">
-                <i className="fa fa-lg fa-home"></i>
-              </Link>
-            </li>
             {!isAuthenticated && (
               <>
+              <li>
+                <i className={`fa fa-user`}></i>
+              </li>
                 <li>
                   <Link to="/register">Register</Link>
                 </li>
@@ -38,13 +26,14 @@ export default function AuthNav() {
             )}
             {isAuthenticated && (
               <>
-              <li>
-                <span>Hello, {username} !</span>
-              </li>
-              <li>
-                <Link to="/logout">Logout</Link>
-              </li>
-            </>
+                <li>
+                  <img src="./images/logo.png" alt="logo" style={{ width: "100px", height: "80px" }} />
+                  <span>Hello, {username} !</span>
+                </li>
+                <li>
+                  <Link to="/logout">Logout</Link>
+                </li>
+              </>
             )}
           </ul>
         </div>
@@ -52,4 +41,3 @@ export default function AuthNav() {
     </header>
   );
 }
-

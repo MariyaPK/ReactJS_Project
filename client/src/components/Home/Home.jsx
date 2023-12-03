@@ -1,3 +1,5 @@
+import styles from "./Home.module.css";
+
 import { Link } from "react-router-dom";
 
 import RecentlyAddedBooks from "../../components/RecentlyAdded/RecentlyAdded";
@@ -5,17 +7,20 @@ import RecentlyAddedBooks from "../../components/RecentlyAdded/RecentlyAdded";
 export default function Home() {
   return (
     <>
-      <div className="wrapper bgded overlay" style={{ backgroundImage: 'url("/images/forHome4.jpg")' }}>
-        <div id="home" className="hoc clear">
+      <div className={styles.background} style={{ backgroundImage: 'url("/images/homeBgr.jpg")' }}>
+        <div id={styles.home} className={styles["hoc clear"]}>
           <article>
-            <p className="heading">Are you looking for mystery?</p>
-            <h2 className="heading">
-              <span className="block">... or... </span>
-              <span className="block">  for a new fantasy world? </span>
+            <p className={styles.heading1}>Are you looking for a mystery?</p>
+            <p className={styles.heading2}>A crime?</p>
+            <h2>
+              <span className={styles.block1}>... or ...</span>
+              <span className={styles.block2}> a new fantasy world?</span>
             </h2>
-            <span>
-              <Link to="/catalog">Seek our library &raquo;</Link>
-            </span>
+            <h3>
+              <span>
+                <Link to="/catalog">Seek bookshelf &raquo;</Link>
+              </span>
+            </h3>
           </article>
         </div>
       </div>

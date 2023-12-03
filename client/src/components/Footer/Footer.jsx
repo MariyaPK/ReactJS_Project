@@ -5,22 +5,7 @@ export default function Footer() {
     <div className="wrapper row4">
       <footer id="footer" className="hoc clear">
         <h3 className="heading">The Book Hunt</h3>
-        <ul className="nospace inline pushright uppercase">
-          <li>
-            <Link to="/">
-              <i className="fa fa-lg fa-home"></i>
-            </Link>
-          </li>
-          <li>
-            <Link to="/catalog">Catalog</Link>
-          </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
-        </ul>
+        <ul className="nospace inline pushright uppercase"></ul>
         <ul className="faico clear">
           <li>
             <Link className="faicon-facebook" to="https://www.facebook.com/">
@@ -44,13 +29,17 @@ export default function Footer() {
           </li>
         </ul>
         <div id="copyright">
-          <p>
-            Copyright &copy; 2023 - All Rights Reserved - <Link to="/">The Book Hunt</Link>
-          </p>
+          <p>Copyright &copy; 2023 - All Rights Reserved</p>
           <p className="font-xs">
-            Template by {" "}
+            Template by{" "}
             <Link target="_blank" to="http://www.os-templates.com/" title="Free Website Templates">
               OS Templates
+            </Link>
+          </p>
+          <p className="font-xs">
+            Created by Mariya Karadzhova for{" "}
+            <Link target="_blank" to="http://www.softuni.bg/" title="SoftUni">
+              SoftUni project assignment
             </Link>
           </p>
         </div>

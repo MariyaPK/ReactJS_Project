@@ -23,7 +23,11 @@ export default function RecentlyAddedBooks({ limit }) {
   const { recentlyAddedBooks } = useBookContext();
 
   if (!recentlyAddedBooks || recentlyAddedBooks.length === 0) {
-    return <div>No recently added books.</div>;
+    return (
+      <div className={styles["no-books"]}>
+        <h2>No recently added books.</h2>
+      </div>
+    );
   }
   const booksToShow = recentlyAddedBooks.slice(0, limit);
 
