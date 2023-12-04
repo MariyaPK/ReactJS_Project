@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <div className="wrapper row4">
       <footer id="footer" className="hoc clear">
-        <h3 className="heading">The Book Hunt</h3>
+        <h3 className="heading" style={{fontSize: "15px", fontStyle: "italic"}}>The Book Hunt</h3>
         <ul className="nospace inline pushright uppercase"></ul>
         <ul className="faico clear">
           <li>

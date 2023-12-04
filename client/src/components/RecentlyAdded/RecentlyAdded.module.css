@@ -9,6 +9,7 @@
 .list-header {
   padding-top: 30px;
 }
+
 .list-header h2 {
   justify-content: center;
   letter-spacing: 10px;
@@ -51,18 +52,23 @@
 }
 
 .book-details {
+  margin-top: auto;
   text-align: center;
 }
 
-button {
+.details-btn {
+  bottom: 0;
   background-color: #70401d;
   color: white;
-  padding: 10px;
+  padding: 15px 75px 10px 75px;
+  border-radius: 0px 0px 15px 15px;
   border: none;
   cursor: pointer;
+  text-align: center;
+
 }
 
-button:hover,
+.details-btn:hover,
 a:hover {
   opacity: 0.9;
 }

@@ -1,5 +1,3 @@
-/* Details.module.css */
-
 .details {
   padding: 20px;
   border: 1px solid #ccc;
@@ -8,25 +6,44 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.image-div {
+.details h2 {
+  border-bottom: 1px solid #0000008c;
+}
+
+.details-book {
   margin-top: 20px;
 }
 
-.details-product {
-  margin-top: 20px;
+.book-image {
+  float: left;
+  max-width: 100%;
+  height: 650px;
+  border-radius: 15px 15px 15px 15px;
+  text-align: center;
+  display: block;
+  padding-bottom: 50px;
+  margin-right: 60px;
 }
 
-.span-style {
+.book-details {
   font-size: 16px;
+  padding-bottom: 20px;
+}
+
+.book-details p {
+  font-size: 16px;
+  font-style: italic;
+  padding: 10px;
 }
 
 .showMoreButton {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #70401d;
+  color: white;
+  padding: 15px 75px 10px 75px;
+  border-radius: 15px 15px 15px 15px;
   border: none;
-  padding: 5px 10px;
-  margin-top: 10px;
   cursor: pointer;
+  width: 250px;
 }
 
 .comments-container {
@@ -67,10 +84,11 @@
 }
 
 .button {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #70401d;
+  color: white;
+  padding: 15px 75px 10px 75px;
+  border-radius: 0px 0px 15px 15px;
   border: none;
-  padding: 10px 15px;
   cursor: pointer;
 }
 
@@ -80,16 +98,6 @@
     padding: 0 10px;
     flex-direction: column;
     align-items: center;
-  }
-
-  .image-div {
-    flex: 1;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-
-  .details-product {
-    flex: 1;
   }
 
   .comment-area textarea {

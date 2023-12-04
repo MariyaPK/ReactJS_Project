@@ -13,7 +13,9 @@ const BookCard = ({ book }) => {
       <div className={styles["book-details"]}>
         <h3>{book.title}</h3>
         <p>Author: {book.author}</p>
-        <button onClick={() => navigate(`/details/${book._id}`)}>Details</button>
+        <button className={styles["details-btn"]} onClick={() => navigate(`/details/${book._id}`)} >
+          Details
+        </button>
       </div>
     </div>
   );

@@ -46,8 +46,7 @@ File: Layout CSS
   color: #b97d2d;
 }
 
-/* Header
---------------------------------------------------------------------------------------------------------------- */
+/* Header */
 
 #header #logo {
   margin-top: 25px;
@@ -71,8 +70,7 @@ File: Layout CSS
   background-color: inherit;
 }
 
-/* Footer
---------------------------------------------------------------------------------------------------------------- */
+/* Footer */
 #footer {
   padding: 40px 0;
   text-align: center;
@@ -98,8 +96,7 @@ File: Layout CSS
   background-color: inherit;
 }
 
-/* Transition Fade
---------------------------------------------------------------------------------------------------------------- */
+/* Transition Fade */
 *,
 *::before,
 *::after {
@@ -109,8 +106,7 @@ File: Layout CSS
   transition: none !important;
 }
 
-/* Navigation
---------------------------------------------------------------------------------------------------------------- */
+/* Navigation */
 nav ul,
 nav ol {
   margin: 0;
@@ -291,8 +287,7 @@ nav ol {
   color: #b97d2d;
 }
 
-/* Font Awesome Social Icons
---------------------------------------------------------------------------------------------------------------- */
+/* Font Awesome Social Icons */
 .faico {
   margin: 0;
   padding: 0;
@@ -347,8 +342,7 @@ nav ol {
   background-color: #ea4c89;
 }
 
-/* Colors
---------------------------------------------------------------------------------------------------------------- */
+/* Colors */
 body {
   color: #474747;
   background-color: #f7f7f7;
@@ -364,10 +358,6 @@ hr,
 .borderedbox {
   border-color: #d7d7d7;
 }
-label span {
-  color: #ff0000;
-  background-color: inherit;
-}
 input:focus,
 textarea:focus,
 *:required:focus {
@@ -380,19 +370,6 @@ textarea:focus,
 .overlay::after {
   color: inherit;
   background-color: rgba(0, 0, 0, 0.55);
-}
-
-.btn,
-.btn.inverse:hover {
-  color: #ffffff;
-  background-color: #b97d2d;
-  border-color: #b97d2d;
-}
-.btn:hover,
-.btn.inverse {
-  color: inherit;
-  background-color: transparent;
-  border-color: inherit;
 }
 
 /* Rows */
@@ -434,9 +411,6 @@ textarea:focus,
     max-width: 90%;
   }
 
-  #navbar {
-  }
-
   #header {
     padding: 30px 0;
   }
@@ -444,8 +418,6 @@ textarea:focus,
     margin: 0;
   }
 
-  #mainav {
-  }
   #mainav ul {
     display: none;
   }
@@ -454,20 +426,12 @@ textarea:focus,
     margin-top: 8px;
   }
 
-  #breadcrumb {
-  }
-
-  .container {
-  }
   #comments input[type="reset"] {
     margin-top: 10px;
   }
   .pagination li {
     display: inline-block;
     margin: 0 5px 5px 0;
-  }
-
-  #footer {
   }
 }
 

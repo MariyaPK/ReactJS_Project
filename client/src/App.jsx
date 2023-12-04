@@ -33,8 +33,8 @@ function App() {
     <>
       <AuthProvider>
         <BookProvider>
-          <AuthNav />
           <Header />
+          <AuthNav />
 
           <main>
             {isLoading && <Loading />}

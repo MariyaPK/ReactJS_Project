@@ -1,53 +1,28 @@
 .catalog {
-  display: inline-block;
-  color: mediumvioletred;
-  font-family: "PT Serif", serif;
-  padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
 }
 
-.catalog ul {
+.catalog-header h2 {
+  justify-content: center;
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #0000008c;
+}
+
+.catalog-items ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding: 50px;
 }
 
-.catalog li {
-  border-style: groove;
-  border-radius: 5px;
-  text-align: center;
-  width: 320px;
-  height: 380px;
-  padding: 5px;
-  margin: 5px;
-}
-
-.catalog img {
-  height: var(--img-height);
-  width: var(--img-width);
-}
-
-.catalog a {
-  color: mediumvioletred;
-}
-
-.catalog h3 {
-  margin: 5px auto;
-  display: block;
-}
-
-.details-btn {
-  background: antiquewhite;
-  color: mediumvioletred;
-  width: 17%;
-  border: 0;
-  padding: 5px;
-  border-radius: 3px;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 5px 2px 8px 5px #c19595;
-}
-
-:root {
-  --img-height: 300px;
-  --img-width: 280px;
+.no-books {
+  justify-content: center;
+  letter-spacing: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #0000008c;
 }

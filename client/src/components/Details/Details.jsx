@@ -14,7 +14,7 @@ import { useBookContext } from "../../contexts/BookContext";
 import CommentForm from "../Comments/CommentForm";
 import Comments from "../Comments/Comments";
 import Likes from "../Likes/Likes";
-import BookRating from "../BookRating/BookRating"
+import BookRating from "../BookRating/BookRating";
 
 export default function Details() {
   const { bookID } = useParams();
@@ -69,11 +69,9 @@ export default function Details() {
   return (
     <section className={styles.details}>
       <h2>{book.title}</h2>
-      <div className={styles["image-div"]}>
-        <img src={book.imageUrl} alt={book.title} />
-      </div>
-      <div className={styles["details-product"]}>
-        <article className={styles["span-style"]}>
+      <div className={styles["details-book"]}>
+        <img src={book.imageUrl} alt={book.title} className={styles["book-image"]} />
+        <article className={styles["book-details"]}>
           <p>
             <span>ISBN: </span>
             {book.isbn}
@@ -91,19 +89,21 @@ export default function Details() {
           <p>
             <span>Summary: </span>
             {showMore ? book.summary : `${book.summary?.slice(0, 100)}...`}
-            {!showMore && (
-              <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
-                Show More
-              </button>
-            )}
-            {showMore && (
-              <button className={styles.showMoreButton} onClick={() => setShowMore(false)}>
-                Show Less
-              </button>
-            )}
+            <span>
+              {!showMore && (
+                <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
+                  Show More
+                </button>
+              )}
+              {showMore && (
+                <button className={styles.showMoreButton} onClick={() => setShowMore(false)}>
+                  Show Less
+                </button>
+              )}
+            </span>
           </p>
         </article>
-        {(isAuthenticated && isOwner) && (
+        {isAuthenticated && isOwner && (
           <>
             <Link to={`/details/${bookID}/edit`}>
               <button type="submit">Edit</button>

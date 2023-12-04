@@ -1,4 +1,5 @@
 import styles from "./Login.module.css";
+
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 
@@ -23,6 +24,9 @@ export default function Login() {
   return (
     <section id="login" className={styles["login-section"]}>
       <div className={styles.container}>
+        <span>
+          <img src="./images/imgForms.png" alt="imgForms" />
+        </span>
         <h2>LOGIN</h2>
         <form className={styles["login-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
@@ -45,7 +49,9 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit">LOGIN</button>
+          <button type="submit" style={{ backgroundColor: "rgb(88, 46, 7)" }}>
+            LOGIN
+          </button>
 
           <p className={styles.message}>
             Not registered? <Link to="/register">Register here</Link>

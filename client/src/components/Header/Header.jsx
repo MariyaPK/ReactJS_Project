@@ -8,20 +8,25 @@ export default function Header() {
   return (
     <div className="wrapper row1">
       <header id="header" className="hoc clear">
-        <div id="logo" className="fl_left">
-          <h1>
-            <Link to="/">The Book Hunt</Link>
-          </h1>
-          <p>let the magic begin...</p>
+        <div id="logo" className="fl_left" style={{ display: "flex", alignItems: "center" }}>
+          <span>
+            {/* <img src="./images/homeLogo.png" alt="homeLogo" style={{ width: "120px", height: "80px" }} /> */}
+          </span>
+          <span>
+            <h1>
+              <Link to="/">THE BOOKSHELF</Link>
+            </h1>
+            <p style={{fontStyle:"italic"}}>let the magic begin...</p>
+          </span>
         </div>
         <nav id="mainav" className="fl_right">
           <ul className="clear">
             <li className="active">
               <Link to="/">Home</Link>
             </li>
-                <li>
-                  <Link to="/catalog">Catalog</Link>
-                </li>
+            <li>
+              <Link to="/catalog">Catalog</Link>
+            </li>
             {isAuthenticated && (
               <>
                 <li>
