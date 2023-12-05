@@ -31,7 +31,7 @@
   text-align: center;
 }
 
-.bookCard h3 {
+.bookCard-details h3 {
   color: rgb(43, 34, 8);
   text-decoration-thickness: 15px;
   text-shadow: 2px 2px 5px rgb(236, 224, 186);
@@ -39,7 +39,7 @@
   display: block;
 }
 
-.bookCard p {
+.bookCard-details p {
   text-decoration-style: solid;
   font-style: italic;
   padding-bottom: 20px;

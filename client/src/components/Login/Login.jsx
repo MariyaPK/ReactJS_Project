@@ -49,7 +49,7 @@ export default function Login() {
             />
           </div>
 
-          <button type="submit" style={{ backgroundColor: "rgb(88, 46, 7)" }}>
+          <button type="submit" >
             LOGIN
           </button>
 

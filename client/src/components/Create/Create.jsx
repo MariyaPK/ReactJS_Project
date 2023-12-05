@@ -3,10 +3,15 @@ import styles from "./Create.module.css";
 import { useBookContext } from "../../contexts/BookContext";
 import { useForm } from "../../hooks/useForm";
 
-export default function Create () {
+export default function Create() {
   const { onCreateBookSubmit } = useBookContext();
 
-  const { values: book, changeHandler, onSubmit, handleCheckboxChange } = useForm(
+  const {
+    values: book,
+    changeHandler,
+    onSubmit,
+    handleCheckboxChange,
+  } = useForm(
     {
       title: "",
       isbn: "",
@@ -22,40 +27,19 @@ export default function Create () {
   return (
     <section className={styles.create}>
       <div className={styles.form}>
-        <h2>ADD NEW BOOK</h2>
+        <h2>Add book to the shelf</h2>
         <form className={styles["create-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
             <label htmlFor="title">Title</label>
-            <input
-              value={book.title}
-              onChange={changeHandler}
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Title"
-            />
+            <input value={book.title} onChange={changeHandler} type="text" name="title" id="title" placeholder="Title" />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="isbn">ISBN</label>
-            <input
-              value={book.isbn}
-              onChange={changeHandler}
-              type="text"
-              name="isbn"
-              id="isbn"
-              placeholder="ISBN"
-            />
+            <input value={book.isbn} onChange={changeHandler} type="text" name="isbn" id="isbn" placeholder="ISBN" />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="author">Author</label>
-            <input
-              value={book.author}
-              onChange={changeHandler}
-              type="text"
-              name="author"
-              id="author"
-              placeholder="Author"
-            />
+            <input value={book.author} onChange={changeHandler} type="text" name="author" id="author" placeholder="Author" />
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="cover-image">Cover</label>
@@ -81,7 +65,7 @@ export default function Create () {
                 "Fiction",
                 "History",
                 "Horror",
-                "Humor and comedy",
+                "Humor/Comedy",
                 "Mystery",
                 "Poetry",
                 "Romance",
@@ -97,7 +81,7 @@ export default function Create () {
                     checked={book.genre.includes(genre)}
                     onChange={() => handleCheckboxChange(genre)}
                   />
-                  {genre}
+                  <span>{genre}</span>
                 </label>
               ))}
             </div>
@@ -121,7 +105,7 @@ export default function Create () {
               name="summary"
               id="book-summary"
               placeholder="Summary"
-              rows="5"
+              rows="10"
               cols="100"
             ></textarea>
           </div>

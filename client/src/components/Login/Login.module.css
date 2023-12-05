@@ -20,7 +20,7 @@
   margin: 0 0 0 95px;
 }
 
-h2 {
+.container h2 {
   text-align: center;
   font-size: 30px;
   color: white;
@@ -36,13 +36,7 @@ h2 {
   margin-bottom: 20px;
 }
 
-label {
-  display: block;
-  margin-bottom: 8px;
-  color: #555;
-}
-
-input {
+.form-group input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -50,7 +44,8 @@ input {
   margin-bottom: 10px;
 }
 
-button {
+.login-form button {
+  background-color: rgb(88, 46, 7);
   width: 100%;
   padding: 10px;
   color: #fff;
@@ -58,6 +53,10 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 16px;
+}
+
+.login-form button:hover {
+  background-color: #b37244;
 }
 
 .message {

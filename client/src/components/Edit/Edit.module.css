@@ -1,18 +1,18 @@
-#edit {
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-
 .form {
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: auto;
   padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 h2 {
   text-align: center;
-  color: #333;
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #0000008c;
 }
 
 .edit-form {
@@ -20,8 +20,12 @@ h2 {
   flex-direction: column;
 }
 
-input,
-textarea {
+.edit-form label {
+  font-style: italic;
+}
+
+.edit-form input,
+.edit-form textarea {
   margin-bottom: 10px;
   padding: 8px;
   width: 100%;
@@ -31,11 +35,30 @@ textarea {
 .genre {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 10px;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-button {
+.genre label {
+  width: calc(20% - 10px);
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.genre label input {
+  margin-right: 5px;
+}
+
+.genre label span {
+  display: inline-block;
+  vertical-align: left;
+  padding-right: 200px;
+  padding-left: 20px;
+}
+
+.edit-form button {
   background-color: #70401d;
   color: white;
   padding: 15px 75px 10px 75px;
@@ -44,6 +67,6 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.edit-form button:hover {
   background-color: #b37244;
 }

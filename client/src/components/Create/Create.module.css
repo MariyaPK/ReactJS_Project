@@ -1,87 +1,87 @@
-/* Create.module.css */
-
 .form {
-    width: 70%;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #333;
-  }
-  
-  .create-form {
-    display: grid;
-    gap: 10px;
-  }
-  
-  .create-form input,
-  .create-form select,
-  .create-form textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .create-form button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  .create-form button:hover {
-    background-color: #45a049;
-  }
-  
-  .create-form textarea {
-    resize: vertical;
-  }
-  
-  .genre {
-    position: relative;
-  }
-  
-  /* You can style the genre dropdown arrow */
-  .genre::after {
-    content: '\25BC';
-    font-size: 14px;
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    pointer-events: none;
-  }
-  
-  /* Responsive layout */
-  @media (max-width: 600px) {
-    .form {
-      width: 90%;
-    }
-  }
+  width: 50%;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
 
-  .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
+h2 {
+  justify-content: center;
+  font-size: 40px;
+  letter-spacing: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #0000008c;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.create-form input,
+.create-form select,
+.create-form textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-style: italic;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.checkbox-label {
+  width: calc(20% - 10px);
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label input {
+  margin-right: 5px;
+}
+
+.checkbox-label span {
+  display: inline-block;
+  vertical-align: left;
+  padding-right: 300px;
+  padding-left: 20px;
+}
+
+.create-form button {
+  background-color: #70401d;
+  color: white;
+  padding: 15px 75px 10px 75px;
+  border-radius: 0px 0px 15px 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.create-form button:hover {
+  opacity: 0.9;
+}
+
+.create-form textarea {
+  resize: vertical;
+}
+
+.genre {
+  position: relative;
+}
+
+/* Responsive layout */
+@media (max-width: 600px) {
+  .form {
+    width: 90%;
   }
-  
-  .checkbox-label {
-    width: 33.33%;
-    box-sizing: border-box;
-    padding: 5px;
-  }
-  
-  .checkbox-label input {
-    margin-right: 5px;
-  }
-  
+}

@@ -21,7 +21,7 @@ export default function Register() {
   return (
     <section id="register" className={styles["register-section"]}>
       <div className={styles.container}>
-      <span>
+        <span>
           <img src="./images/imgForms.png" alt="imgForms" />
         </span>
         <h2>REGISTER</h2>
@@ -64,7 +64,7 @@ export default function Register() {
             />
           </div>
 
-          <button type="submit" style={{ backgroundColor: "rgb(88, 46, 7)" }}>REGISTER</button>
+          <button type="submit">REGISTER</button>
 
           <p className={styles.message}>
             Already have an account? <Link to="/login">Login here</Link>
