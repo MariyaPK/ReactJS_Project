@@ -1,0 +1,32 @@
+.create-comment {
+  padding: 25px;
+}
+
+.comment-area {
+  display: flex;
+  justify-content: center;
+}
+
+.textarea-comments {
+  width: 80%;
+  height: 30%;
+  margin-right: 15px;
+  border-radius: 5px 5px 5px 5px;
+
+}
+
+.comment-area button {
+  width: 15%;
+  background-color: #af632c;
+  color: white;
+  font-size: 15px;
+  border:none;
+  border-radius: 5px 5px 5px 5px;
+
+}
+
+.comment-area button:hover {
+    background-color: #b37244;
+    
+}
+

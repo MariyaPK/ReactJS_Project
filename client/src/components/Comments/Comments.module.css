@@ -1,0 +1,22 @@
+.comments {
+  padding: 20px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.comment {
+  border: 1px solid #9d4e0e;
+  padding: 10px;
+  border: 2px solid #c48551;
+  border-radius: 2px 2px 2px 2px;
+  background-color: #f7f7f7;
+}
+
+.comment ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.comment p:first-of-type {
+  font-size: italic;
+}

@@ -56,5 +56,4 @@
 
 .bookCard-info:hover,
 a:hover {
-  opacity: 0.9;
-}
+  background-color: #b37244;

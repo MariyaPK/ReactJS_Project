@@ -1,3 +1,5 @@
+import styles from "./CommentForm.module.css";
+
 import { useForm } from "../../hooks/useForm";
 
 export default function CommentForm({ onCommentSubmit }) {
@@ -13,17 +15,19 @@ export default function CommentForm({ onCommentSubmit }) {
   );
 
   return (
-    <article className="create-comment">
-      <form className="form" onSubmit={onSubmit}>
-        <textarea
-          className="textarea-comments"
-          rows={3}
-          name="comment"
-          placeholder="Type Your Comment"
-          value={userComment.comment}
-          onChange={changeHandler}
-        ></textarea>
-        <button type="submit">Add</button>
+    <article className={styles["create-comment"]}>
+      <form className={styles["-comment-form"]} onSubmit={onSubmit}>
+        <div className={styles["comment-area"]}>
+          <textarea
+            className={styles["textarea-comments"]}
+            rows={3}
+            name="comment"
+            placeholder="Comment..."
+            value={userComment.comment}
+            onChange={changeHandler}
+          ></textarea>
+          <button type="submit">Comment</button>
+        </div>
       </form>
     </article>
   );
