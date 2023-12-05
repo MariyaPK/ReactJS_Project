@@ -54,6 +54,7 @@
   cursor: pointer;
 }
 
-.bookCard-info:hover,
+.details-btn:hover,
 a:hover {
   background-color: #b37244;
+}

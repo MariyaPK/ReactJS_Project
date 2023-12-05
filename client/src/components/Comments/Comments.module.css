@@ -8,8 +8,36 @@
   border: 1px solid #9d4e0e;
   padding: 10px;
   border: 2px solid #c48551;
-  border-radius: 2px 2px 2px 2px;
+  border-radius: 4px 4px 4px 4px;
   background-color: #f7f7f7;
+  margin: 25px;
+}
+
+.commentDataLeft {
+  display: flex;
+  align-items: center;
+}
+
+.commentDataLeft i {
+  padding-right: 10px;
+  align-items: center;
+  font-size: 15px;
+}
+
+.author {
+  width: 100px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.commentDataRight p:first-of-type {
+  padding-left: 23px;
+}
+
+.commentDataRight p:last-of-type {
+  font-style: italic;
+  font-size: 10px;
 }
 
 .comment ul {
@@ -17,6 +45,13 @@
   padding: 0;
 }
 
-.comment p:first-of-type {
-  font-size: italic;
+.comment i {
+  display: block;
+}
+
+.comments p {
+  font-size: 15px;
+  font-style: italic;
+  justify-content: center;
+  color: rgb(85, 39, 6);
 }
