@@ -156,7 +156,7 @@ export default function Edit() {
                   type="checkbox"
                   name="genre"
                   value="Humor and comedy"
-                  checked={book.genre?.includes("Humor and comedy") ?? false}
+                  checked={book.genre?.includes("Humor/comedy") ?? false}
                   onChange={handleCheckboxChange}
                 />
                 <span>Humor/Comedy</span>

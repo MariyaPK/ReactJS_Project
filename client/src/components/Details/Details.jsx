@@ -70,26 +70,24 @@ export default function Details() {
     <section className={styles.details}>
       <h2>{book.title}</h2>
       <div className={styles["details-book"]}>
-        <img src={book.imageUrl} alt={book.title} className={styles["book-image"]} />
-        <article className={styles["book-details"]}>
-          <p>
-            <span>ISBN: </span>
-            {book.isbn}
-          </p>
-          <p>
-            <span>Author: </span> {book.author}
-          </p>
-          <p>
-            <span>Genres: </span> {book.genre}
-          </p>
-          <p>
-            <span>Publish year: </span>
-            {book.publishYear}
-          </p>
-          <p>
-            <span>Summary: </span>
-            {showMore ? book.summary : `${book.summary?.slice(0, 100)}...`}
-            <span>
+        <div className={styles["book-details"]}>
+          <div className={styles["book-image-left"]}>
+            <img src={book.imageUrl} alt={book.title} />
+          </div>
+          <div className={styles["book-details-right"]}>
+            <p>
+              <span>ISBN: </span>
+              <span> {book.isbn} </span>
+            </p>
+            <p>
+              <span>Author: </span> <span>{book.author} </span>
+            </p>
+            <p>
+              <span>Genres: </span> <span>{book.genre} </span>
+            </p>
+            <p>
+              <span>Summary: </span>
+              <span>{showMore ? book.summary : `${book.summary?.slice(0, 100)}...`}</span>
               {!showMore && (
                 <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
                   Show More
@@ -100,34 +98,44 @@ export default function Details() {
                   Show Less
                 </button>
               )}
-            </span>
-          </p>
-        </article>
-        {isAuthenticated && isOwner && (
-          <>
-            <Link to={`/details/${bookID}/edit`}>
-              <button type="submit">Edit</button>
-            </Link>
-            <button type="submit" onClick={deleteClickHandler}>
-              Delete
-            </button>
-          </>
-        )}
-        {isAuthenticated ? (
-          <>
-            <Likes />
-            <BookRating />
+            </p>
+
+            {isAuthenticated && isOwner && (
+              <div className={styles["details-btn"]}>
+                <button type="submit" onClick={() => navigate(`/details/${book._id}/edit`)}>
+                  Edit
+                </button>
+                <button type="submit" onClick={deleteClickHandler}>
+                  Delete
+                </button>
+              </div>
+            )}
+            {isAuthenticated && (
+              <div className={styles["details-addons"]}>
+                <div className={styles["likes-rates"]}>
+                  <Likes />
+                  <BookRating />
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        {isAuthenticated && (
+          <div className={styles["details-addons2"]}>
             <div className={styles["comment-area"]}>
               <CommentForm onCommentSubmit={onCommentSubmit} />
             </div>
-            <Comments book={book} />
-          </>
-        ) : (
-          <p className="container">
-            <Link to="/login">Sign in to like and comment</Link>
-          </p>
+      <Comments book={book} />
+
+          </div>
         )}
       </div>
+      {!isAuthenticated && (
+        <div className={styles.signIn}>
+          <Link to="/login">Sign in to like and comment</Link>
+        </div>
+
+      )}
     </section>
   );
 }

@@ -1,43 +1,25 @@
 .likes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .like {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .likeIcon {
-    cursor: pointer;
-  }
-  
-  .largeFont {
-    font-size: 50px;
-  }
-  
-  .textCenter {
-    text-align: center;
-  }
-  
-  /* Heart colors */
-  .fa-heart {
-  }
-  
-  .fa-heart.red {
-  }
-  
-  .likeIcon.active {
-  }
-  
-  .liked {
-    color: red;
-  }
-  
-  .disliked {
-    color: gray;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.like {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-right: 100px;
+}
+
+.like p {
+  padding-left: 20px;
+}
+
+.liked {
+  color: red;
+  font-size: 25px;
+  text-shadow: 0 0 3px #ff0000;
+}
+
+.disliked {
+  color: gray;
+  font-size: 25px;
+}

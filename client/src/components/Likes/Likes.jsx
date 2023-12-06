@@ -16,7 +16,7 @@ export default function Likes() {
   useEffect(() => {
     likesService.getLikesCount(bookID).then((likesResult) => {
       setLike(likesResult);
-      setIsLiked(likesResult.some((x) => x._ownerId === userId))
+      setIsLiked(likesResult.some((x) => x._ownerId === userId));
     });
   }, [bookID, userId]);
 
@@ -38,13 +38,11 @@ export default function Likes() {
   return (
     <div className={styles.likes}>
       <div className={styles.like}>
-        <h5>
-          <b>{like.length} Likes</b>
-        </h5>
+        <p>{like.length} Likes</p>
         {isAuthenticated && (
-          <span className={isLiked ? styles.liked : styles.disliked} onClick={onLikeClick}>
+          <div className={isLiked ? styles.liked : styles.disliked} onClick={onLikeClick}>
             <i id={styles.heart} className={`fa fa-heart ${isLiked ? styles.red : ""}`}></i>
-          </span>
+          </div>
         )}
       </div>
     </div>
