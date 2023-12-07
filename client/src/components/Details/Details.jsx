@@ -132,7 +132,10 @@ export default function Details() {
       </div>
       {!isAuthenticated && (
         <div className={styles.signIn}>
-          <Link to="/login">Sign in to like and comment</Link>
+          <button  onClick={() => navigate(`/login`)}>
+          Sign in to like and comment
+        </button>
+          
         </div>
 
       )}

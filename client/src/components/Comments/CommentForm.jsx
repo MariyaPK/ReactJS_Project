@@ -22,11 +22,11 @@ export default function CommentForm({ onCommentSubmit }) {
             className={styles["textarea-comments"]}
             rows={3}
             name="comment"
-            placeholder="Comment..."
+            placeholder="Add a review..."
             value={userComment.comment}
             onChange={changeHandler}
           ></textarea>
-          <button type="submit">Comment</button>
+          <button type="submit">Review</button>
         </div>
       </form>
     </article>

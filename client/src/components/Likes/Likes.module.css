@@ -1,16 +1,16 @@
 .likes {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .like {
   display: flex;
   flex-direction: row-reverse;
-  padding-right: 100px;
 }
 
 .like p {
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .liked {

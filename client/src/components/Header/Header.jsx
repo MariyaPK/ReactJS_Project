@@ -4,6 +4,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Header() {
   const { isAuthenticated } = useContext(AuthContext);
+  
 
   return (
     <div className="wrapper row1">

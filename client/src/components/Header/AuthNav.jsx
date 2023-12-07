@@ -27,10 +27,14 @@ export default function AuthNav() {
             {isAuthenticated && (
               <>
                 <li>
-                  <img src="./images/userLogo.png" alt="userLogo" style={{ width: "60px", height: "60px", borderRadius: "70%" }} />
-                  <span style={{padding: "20px", fontSize: "15px"}}>Hello, {username} !</span>
+                  <img
+                    src="./images/userLogo.png"
+                    alt="userLogo"
+                    style={{ width: "60px", height: "60px", borderRadius: "70%" }}
+                  />
+                  <span style={{ padding: "20px", fontSize: "15px" }}>Hello, {username} !</span>
                 </li>
-                <li style={{fontSize: "15px"}}>
+                <li style={{ fontSize: "15px" }}>
                   <Link to="/logout">Logout</Link>
                 </li>
               </>

@@ -1,10 +1,12 @@
 import styles from "./Home.module.css";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import RecentlyAddedBooks from "../../components/RecentlyAdded/RecentlyAdded";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.background} style={{ backgroundImage: 'url("/images/homeBgr.jpg")' }}>
@@ -17,9 +19,7 @@ export default function Home() {
               <span className={styles.block2}> a new fantasy world?</span>
             </h2>
             <h3>
-              <span>
-                <Link to="/catalog">Seek bookshelf &raquo;</Link>
-              </span>
+              <span onClick={() => navigate(`/catalog`)}>Seek bookshelf</span>
             </h3>
           </article>
         </div>

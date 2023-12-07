@@ -43,7 +43,8 @@ File: Layout CSS
   border-color: rgba(255, 255, 255, 0.2);
 }
 #navbar > div:last-of-type li:first-child a {
-  color: #b97d2d;
+  color: #b97c2d00;
+  
 }
 
 /* Header */
@@ -68,6 +69,7 @@ File: Layout CSS
 #header #logo h1 a {
   color: inherit;
   background-color: inherit;
+  text-decoration: none;
 }
 
 /* Footer */
@@ -127,6 +129,7 @@ nav ol {
   font-family: "FontAwesome";
   font-size: 10px;
   line-height: 10px;
+  text-decoration: none;
 }
 
 /* Top Navigation */
@@ -162,10 +165,12 @@ nav ol {
 #mainav li a {
   display: block;
   padding: 30px 0;
+  text-decoration: none;
 }
 #mainav li li a {
   border: solid;
   border-width: 0 0 1px 0;
+  text-decoration: none;
 }
 #mainav .drop {
   padding-left: 15px;
@@ -175,6 +180,7 @@ nav ol {
   display: block;
   margin: 0;
   padding: 10px 15px;
+  text-decoration: none;
 }
 #mainav .drop::after,
 #mainav li li .drop::after {
@@ -221,23 +227,27 @@ nav ol {
 
 #mainav li a {
   color: inherit;
+  text-decoration: none;
 }
 #mainav .active a,
 #mainav a:hover,
 #mainav li:hover > a {
   color: #b97d2d;
   background-color: inherit;
+  text-decoration: none;
 }
 #mainav li li a,
 #mainav .active li a {
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.6);
   border-color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
 }
 #mainav li li:hover > a,
 #mainav .active .active > a {
   color: #ffffff;
   background-color: #b97d2d;
+  text-decoration: none;
 }
 #mainav form select {
   color: #ffffff;
@@ -349,6 +359,7 @@ body {
 }
 a {
   color: #b97d2d;
+  text-decoration: none;
 }
 a:active,
 a:focus {
@@ -377,6 +388,7 @@ textarea:focus,
 .row0 a {
   color: #474747;
   background-color: #f7f7f7;
+  text-decoration: none;
 }
 .row1 {
   color: #474747;

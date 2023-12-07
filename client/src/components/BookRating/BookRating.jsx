@@ -23,7 +23,7 @@ export default function Rate() {
   const handleRating = async (givenRating) => {
     const currentRate = userRating.find((x) => x._ownerId === userId);
 
-    console.log("rated");
+    console.log(currentRate);
 
     try {
       if (givenRating === userRating) {
@@ -73,7 +73,7 @@ export default function Rate() {
         <div className="col-md-12">
           <div className="stars">
             <form method="POST">{generateStars(5)}</form>
-            <span className={isRated ? "rate" : "changeRate"} onClick={handleRating}></span>
+            <span className={isRated ? "rate" : "changeRate"} onChange={handleRating}></span>
           </div>
         </div>
       </div>

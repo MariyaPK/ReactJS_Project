@@ -4,13 +4,29 @@
   text-align: left;
 }
 
+
+.comments span p {
+  font-size: 25px;
+  font-style: italic;
+  margin-left: 20px;
+  text-shadow: 2px 2px 5px rgb(81, 52, 2);
+  color: rgb(85, 39, 6);
+}
+
 .comment {
+  padding: 10px;
+  border: 2px solid #c48551;
+  border-radius: 4px 4px 4px 4px;
+  margin: 25px;
+}
+
+.comment-details{
   border: 1px solid #9d4e0e;
   padding: 10px;
   border: 2px solid #c48551;
   border-radius: 4px 4px 4px 4px;
   background-color: #f7f7f7;
-  margin: 25px;
+  margin: 5px;
 }
 
 .commentDataLeft {
@@ -40,6 +56,7 @@
   font-size: 10px;
 }
 
+
 .comment ul {
   list-style-type: none;
   padding: 0;
@@ -49,7 +66,7 @@
   display: block;
 }
 
-.comments p {
+.comment p {
   font-size: 15px;
   font-style: italic;
   justify-content: center;
