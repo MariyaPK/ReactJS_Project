@@ -13,12 +13,13 @@ const LoginFormKeys = {
 
 export default function Login() {
   const { onLoginSubmit } = useContext(AuthContext);
-  const { values, changeHandler, onSubmit } = useForm(
+  const { values, changeHandler, onSubmit, errors } = useForm(
     {
       [LoginFormKeys.Email]: "",
       [LoginFormKeys.Password]: "",
     },
-    onLoginSubmit
+    onLoginSubmit,
+    "login"
   );
 
   return (
@@ -38,6 +39,7 @@ export default function Login() {
               value={values[LoginFormKeys.Email]}
               onChange={changeHandler}
             />
+            {errors.email && <span className={styles.error}>{errors.email}</span>}
 
             <input
               type="password"
@@ -47,11 +49,10 @@ export default function Login() {
               value={values[LoginFormKeys.Password]}
               onChange={changeHandler}
             />
+            {errors.email && <span className={styles.error}>{errors.password}</span>}
           </div>
 
-          <button type="submit" >
-            LOGIN
-          </button>
+          <button type="submit">LOGIN</button>
 
           <p className={styles.message}>
             Not registered? <Link to="/register">Register here</Link>

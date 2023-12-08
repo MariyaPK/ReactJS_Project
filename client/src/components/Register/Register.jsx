@@ -8,14 +8,15 @@ import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Register() {
   const { onRegisterSubmit } = useContext(AuthContext);
-  const { values, changeHandler, onSubmit } = useForm(
+  const { values, changeHandler, onSubmit, errors } = useForm(
     {
       email: "",
       username: "",
       password: "",
       rePassword: "",
     },
-    onRegisterSubmit
+    onRegisterSubmit,
+    "register"
   );
 
   return (
@@ -35,6 +36,7 @@ export default function Register() {
               value={values.email}
               onChange={changeHandler}
             />
+            {errors.email && <span className={styles.error}>{errors.email}</span>}
 
             <input
               type="text"
@@ -44,6 +46,7 @@ export default function Register() {
               value={values.username}
               onChange={changeHandler}
             />
+            {errors.username && <span className={styles.error}>{errors.username}</span>}
 
             <input
               type="password"
@@ -53,6 +56,7 @@ export default function Register() {
               value={values.password}
               onChange={changeHandler}
             />
+            {errors.password && <span className={styles.error}>{errors.password}</span>}
 
             <input
               type="password"
@@ -62,6 +66,7 @@ export default function Register() {
               value={values.rePassword}
               onChange={changeHandler}
             />
+            {errors.rePassword && <span className={styles.error}>{errors.rePassword}</span>}
           </div>
 
           <button type="submit">REGISTER</button>

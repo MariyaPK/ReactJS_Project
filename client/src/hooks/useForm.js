@@ -1,6 +1,50 @@
 import { useState } from "react";
 
-const validateForm = (values) => {
+const validateRegisterForm = (values) => {
+  let errors = {};
+
+  if (!values.email) {
+    errors.email = "Email is required";
+  } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  if (!values.username) {
+    errors.username = "Username is required";
+  } else if (values.username.length < 3 || values.username.length > 30) {
+    errors.username = "Username must be between 3 and 30 characters";
+  }
+
+  if (!values.password) {
+    errors.password = "Password is required";
+  } else if (values.password.length < 6) {
+    errors.password = "Password must be at least 6 characters";
+  }
+
+  if (values.password !== values.rePassword) {
+    errors.rePassword = "Passwords do not match";
+  }
+
+  return errors;
+};
+
+const validateLoginForm = (values) => {
+  let errors = {};
+
+  if (!values.email) {
+    errors.email = "Email is required";
+  } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  if (!values.password) {
+    errors.password = "Password is required";
+  }
+
+  return errors;
+};
+
+const validateBookForm = (values) => {
   let errors = {};
 
   const imageUrlPattern = /^https?:\/\//;
@@ -48,9 +92,24 @@ const validateForm = (values) => {
   return errors;
 };
 
-export const useForm = (initialValues, onSubmitHandler) => {
+export const useForm = (initialValues, onSubmitHandler, formType) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
+
+  const getValidationFunction = (type) => {
+    switch (type) {
+      case "register":
+        return validateRegisterForm;
+      case "login":
+        return validateLoginForm;
+      case "book":
+        return validateBookForm;
+      default:
+        return () => ({});
+    }
+  };
+
+  const validateForm = getValidationFunction(formType);
 
   const changeHandler = (e) => {
     const { name, value } = e.target;
