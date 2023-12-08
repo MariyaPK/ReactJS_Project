@@ -17,3 +17,12 @@ export const addComment = async (bookID, comment) => {
 
   return result;
 };
+
+export const getUserComments = async (bookID, userId) => {
+  try {
+    const result = await request.get(`${baseUrl}`, { bookID, userId });
+    return result;
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};

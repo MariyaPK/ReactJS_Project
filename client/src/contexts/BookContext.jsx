@@ -36,7 +36,7 @@ export const BookProvider = ({ children }) => {
     try {
       const newBook = await bookService.createBook(data);
 
-     setBooks((state) => {
+      setBooks((state) => {
         const updatedBooks = [...state, newBook];
         navigate("/catalog");
         return updatedBooks;
@@ -61,6 +61,7 @@ export const BookProvider = ({ children }) => {
   const getBook = (bookID) => {
     return books.find((book) => book._id === bookID);
   };
+
   const getRecentlyAddedBooks = (limit) => {
     const sortedBooks = [...books].sort((a, b) => new Date(b._createdOn) - new Date(a._createdOn));
     const booksToShow = sortedBooks.slice(0, limit);
