@@ -21,7 +21,8 @@ export default function Create() {
       publishYear: "",
       summary: "",
     },
-    onCreateBookSubmit
+    onCreateBookSubmit,
+    "book"
   );
 
   return (
@@ -31,38 +32,17 @@ export default function Create() {
         <form className={styles["create-form"]} method="POST" onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
             <label htmlFor="title">Title</label>
-            <input
-              value={book.title}
-              onChange={changeHandler}
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Title"
-            />
+            <input value={book.title} onChange={changeHandler} type="text" name="title" id="title" placeholder="Title" />
             {errors.title && <span className={styles.error}>{errors.title}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="isbn">ISBN</label>
-            <input
-              value={book.isbn}
-              onChange={changeHandler}
-              type="text"
-              name="isbn"
-              id="isbn"
-              placeholder="ISBN"
-            />
+            <input value={book.isbn} onChange={changeHandler} type="text" name="isbn" id="isbn" placeholder="ISBN" />
             {errors.isbn && <span className={styles.error}>{errors.isbn}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="author">Author</label>
-            <input
-              value={book.author}
-              onChange={changeHandler}
-              type="text"
-              name="author"
-              id="author"
-              placeholder="Author"
-            />
+            <input value={book.author} onChange={changeHandler} type="text" name="author" id="author" placeholder="Author" />
             {errors.author && <span className={styles.error}>{errors.author}</span>}
           </div>
           <div className={styles["form-group"]}>

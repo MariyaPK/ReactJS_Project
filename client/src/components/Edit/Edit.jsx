@@ -31,7 +31,8 @@ export default function Edit() {
       publishYear: "",
       summary: "",
     },
-    onBookEditSubmit
+    onBookEditSubmit,
+    "book"
   );
 
   useEffect(() => {
@@ -47,38 +48,17 @@ export default function Edit() {
         <form className={styles["edit-form"]} onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
             <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              placeholder="Title"
-              value={book.title}
-              onChange={changeHandler}
-            />
+            <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={changeHandler} />
             {errors.title && <span className={styles.error}>{errors.title}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="isbn">ISBN</label>
-            <input
-              type="text"
-              name="isbn"
-              id="isbn"
-              placeholder="ISBN"
-              value={book.isbn}
-              onChange={changeHandler}
-            />
+            <input type="text" name="isbn" id="isbn" placeholder="ISBN" value={book.isbn} onChange={changeHandler} />
             {errors.isbn && <span className={styles.error}>{errors.isbn}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="author">Author</label>
-            <input
-              type="text"
-              name="author"
-              id="author"
-              placeholder="Author"
-              value={book.author}
-              onChange={changeHandler}
-            />
+            <input type="text" name="author" id="author" placeholder="Author" value={book.author} onChange={changeHandler} />
             {errors.author && <span className={styles.error}>{errors.author}</span>}
           </div>
           <div className={styles["form-group"]}>
