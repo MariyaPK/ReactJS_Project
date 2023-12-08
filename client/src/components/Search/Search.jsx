@@ -1,12 +1,14 @@
+import styles from "./Search.module.css";
+
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import { bookServiceFactory } from "../../services/bookService.js";
 
-export default function Search () {
+export default function Search() {
   const bookService = bookServiceFactory();
-  
+
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
@@ -18,7 +20,7 @@ export default function Search () {
   const filteredSuggestions = books?.filter((book) => {
     const isTitleString = book.title && typeof book.title === "string";
     const includesQuery = isTitleString && book.title.toLowerCase().includes(query.trim().toLowerCase());
-  
+
     return includesQuery;
   });
 
@@ -28,8 +30,7 @@ export default function Search () {
     setShowSuggestions(inputValue.length > 0);
   };
 
-  const onSearch = () => {
-  };
+  const onSearch = () => {};
 
   const onSuggestionClick = (value, book) => {
     setQuery(value);
@@ -44,39 +45,49 @@ export default function Search () {
     bookService.getAll().then((data) => setBooks(data));
   }, []);
 
+  const resetState = () => {
+    setQuery("");
+    setShowSuggestions(false);
+    setSelectedBook(null);
+
+  };
+
   return (
-    <form onSubmit={handleSubmit(onSearch)}>
-      <input
-        type="text"
-        {...register("query")}
-        className="search-form"
-        placeholder="Search"
-        value={query}
-        autoComplete="off"
-        onChange={handleQuery}
-        ref={searchRef}
-      />
-      {showSuggestions && filteredSuggestions.length > 0 && (
-        <div className="suggestions">
-          {filteredSuggestions.map((suggestion) => (
-            <div
-              className="suggestion"
-              key={suggestion._id}
-              onClick={() => onSuggestionClick(suggestion.title, suggestion)}
-            >
-              {suggestion.title}
-            </div>
-          ))}
-        </div>
-      )}
-      {selectedBook && (
-        <div className="selected-book-card">
-          <h2>{selectedBook.title}</h2>
-          <img src={selectedBook.imageUrl} alt={selectedBook.title} />
-          <button onClick={() => navigate(`/details/${selectedBook._id}`)}>Details</button>
-        </div>
-      )}
-    </form>
+    <div className={styles["search-container"]}>
+      <h2>Search books by title</h2>
+      <form onSubmit={handleSubmit(onSearch)}>
+        <input
+          type="text"
+          {...register("query")}
+          className={styles.input}
+          placeholder="Search"
+          value={query}
+          autoComplete="off"
+          onChange={handleQuery}
+          ref={searchRef}
+        />
+        <button className={styles.resetBtn} onClick={() => resetState()}>RESET</button>
+        {showSuggestions && filteredSuggestions.length > 0 && (
+          <div className={styles.suggestions}>
+            {filteredSuggestions.map((suggestion) => (
+              <div
+                className={styles.suggestion}
+                key={suggestion._id}
+                onClick={() => onSuggestionClick(suggestion.title, suggestion)}
+              >
+                {suggestion.title}
+              </div>
+            ))}
+          </div>
+        )}
+        {selectedBook && (
+          <div className={styles["selected-book-card"]}>
+            <h2>{selectedBook.title}</h2>
+            <img src={selectedBook.imageUrl} alt={selectedBook.title} />
+            <button onClick={() => navigate(`/details/${selectedBook._id}`)}>Details</button>
+          </div>
+        )}
+      </form>
+    </div>
   );
 }
-

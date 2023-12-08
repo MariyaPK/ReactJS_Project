@@ -2,6 +2,7 @@
 .details {
   width: 60%;
   margin: 0 auto;
+  height: auto;
 }
 
 .details h2 {
@@ -71,16 +72,15 @@
 }
 
 .details-addons {
-  margin-top: 50px;
+  padding-top: 200px;
 }
 
 .likes-rates {
-  margin-right: 120px;
-  
+  margin: -20px;
 }
 
 .details-addons2 {
-  margin-top: 150px;
+  margin-top: 10px;
   width: 750px;
 }
 

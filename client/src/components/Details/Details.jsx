@@ -1,7 +1,7 @@
 import styles from "./Details.module.css";
 
 import { useEffect, useState, useReducer } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import { bookServiceFactory } from "../../services/bookService";
 import { useService } from "../../hooks/useService";
@@ -87,7 +87,7 @@ export default function Details() {
             </p>
             <p>
               <span>Summary: </span>
-              <span>{showMore ? book.summary : `${book.summary?.slice(0, 100)}...`}</span>
+              <span>{showMore ? book.summary : `${book.summary?.slice(0, 300)}...`}</span>
               {!showMore && (
                 <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
                   Show More
@@ -110,34 +110,29 @@ export default function Details() {
                 </button>
               </div>
             )}
-            {isAuthenticated && (
-              <div className={styles["details-addons"]}>
-                <div className={styles["likes-rates"]}>
-                  <Likes />
-                  <BookRating />
-                </div>
-              </div>
-            )}
           </div>
         </div>
+        {isAuthenticated && (
+          <div className={styles["details-addons"]}>
+            <div className={styles["likes-rates"]}>
+              <Likes />
+              <BookRating />
+            </div>
+          </div>
+        )}
         {isAuthenticated && (
           <div className={styles["details-addons2"]}>
             <div className={styles["comment-area"]}>
               <CommentForm onCommentSubmit={onCommentSubmit} />
             </div>
-      <Comments book={book} />
-
+            <Comments book={book} />
           </div>
         )}
       </div>
       {!isAuthenticated && (
         <div className={styles.signIn}>
-          <button  onClick={() => navigate(`/login`)}>
-          Sign in to like and comment
-        </button>
-          
+          <button onClick={() => navigate(`/login`)}>Sign in to like and comment</button>
         </div>
-
       )}
     </section>
   );

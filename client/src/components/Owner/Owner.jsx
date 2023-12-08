@@ -1,3 +1,5 @@
+import styles from "./Owner.module.css";
+
 import { useEffect, useState } from "react";
 
 import { useAuthContext } from "../../contexts/AuthContext";
@@ -18,17 +20,13 @@ export default function Owner() {
   }, [userId]);
 
   return (
-    <div className="booksOwnerCard">
-      <div className="container-fluid pt-10">
-        <div className="row justify-content-md-center ">
-          <div className="col-md-10 col-sm-12">
-            <div className="card-columns">
-              {userBooks.map((book) => (
-                <CatalogItem key={book._id} {...book} />
-              ))}
-            </div>
-          </div>
-        </div>
+    <div className={styles["owner-books"]}>
+      <div className={styles["book-card"]}>
+        <span>
+        {userBooks.map((book) => (
+          <CatalogItem key={book._id} {...book} />
+        ))}
+        </span>
       </div>
     </div>
   );

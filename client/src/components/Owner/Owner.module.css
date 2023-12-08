@@ -1,0 +1,12 @@
+.owner-books {
+  padding: 20px;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.book-card span {
+    display: flex;
+}
