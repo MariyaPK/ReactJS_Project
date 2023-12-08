@@ -85,3 +85,10 @@ h2 {
     width: 90%;
   }
 }
+
+.create-form .error {
+  color: red;
+  font-size: 12px;
+  display: block; 
+  text-align: right; 
+}

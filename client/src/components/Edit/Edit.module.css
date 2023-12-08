@@ -70,3 +70,10 @@ h2 {
 .edit-form button:hover {
   background-color: #b37244;
 }
+
+.edit-form .error {
+  color: red;
+  font-size: 12px;
+  display: block; 
+  text-align: right; 
+}

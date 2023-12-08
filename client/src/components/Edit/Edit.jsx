@@ -16,6 +16,7 @@ export default function Edit() {
 
   const {
     values: book,
+    errors,
     changeHandler,
     onSubmit,
     changeValues,
@@ -33,8 +34,6 @@ export default function Edit() {
     onBookEditSubmit
   );
 
-  // console.log(book);
-
   useEffect(() => {
     bookService.getBook(bookID).then((result) => {
       changeValues(result);
@@ -48,190 +47,75 @@ export default function Edit() {
         <form className={styles["edit-form"]} onSubmit={onSubmit}>
           <div className={styles["form-group"]}>
             <label htmlFor="title">Title</label>
-            <input type="text" name="title" id="title" placeholder="Title" value={book.title} onChange={changeHandler} />
+            <input
+              type="text"
+              name="title"
+              id="title"
+              placeholder="Title"
+              value={book.title}
+              onChange={changeHandler}
+            />
+            {errors.title && <span className={styles.error}>{errors.title}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="isbn">ISBN</label>
-            <input type="text" name="isbn" id="isbn" placeholder="ISBN" value={book.isbn} onChange={changeHandler} />
+            <input
+              type="text"
+              name="isbn"
+              id="isbn"
+              placeholder="ISBN"
+              value={book.isbn}
+              onChange={changeHandler}
+            />
+            {errors.isbn && <span className={styles.error}>{errors.isbn}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="author">Author</label>
-            <input type="text" name="author" id="author" placeholder="Author" value={book.author} onChange={changeHandler} />
+            <input
+              type="text"
+              name="author"
+              id="author"
+              placeholder="Author"
+              value={book.author}
+              onChange={changeHandler}
+            />
+            {errors.author && <span className={styles.error}>{errors.author}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="genre">Genres</label>
             <div className={styles.genre}>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Biography") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Biography </span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Classics") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Classics</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Comics") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Comics</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Cookbooks"
-                  checked={book.genre?.includes("Cookbooks") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Cookbooks</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Crime"
-                  checked={book.genre?.includes("Crime") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Crime</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Fantasy"
-                  checked={book.genre?.includes("Fantasy") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Fantasy</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Fiction"
-                  checked={book.genre?.includes("Fiction") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Fiction</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="History"
-                  checked={book.genre?.includes("History") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>History</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Horror") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Horror</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Humor and comedy"
-                  checked={book.genre?.includes("Humor/comedy") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Humor/Comedy</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Mystery"
-                  checked={book.genre?.includes("Mystery") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Mystery</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Poetry") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Poetry</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Romance") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Romance</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Science fiction"
-                  checked={book.genre?.includes("Science fiction") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Science fiction</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Travel"
-                  checked={book.genre?.includes("Travel") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Travel</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Comics"
-                  checked={book.genre?.includes("Thriller") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Thriller</span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  name="genre"
-                  value="Other"
-                  checked={book.genre?.includes("Other") ?? false}
-                  onChange={handleCheckboxChange}
-                />
-                <span>Other</span>
-              </label>
+              {[
+                "Biography",
+                "Classics",
+                "Comics",
+                "Cookbooks",
+                "Crime",
+                "Fantasy",
+                "Fiction",
+                "History",
+                "Horror",
+                "Humor/comedy",
+                "Mystery",
+                "Poetry",
+                "Romance",
+                "Science fiction",
+                "Travel",
+                "Thriller",
+                "Other",
+              ].map((genre) => (
+                <label key={genre}>
+                  <input
+                    type="checkbox"
+                    name="genre"
+                    value={genre}
+                    checked={book.genre?.includes(genre)}
+                    onChange={handleCheckboxChange}
+                  />
+                  <span>{genre}</span>
+                </label>
+              ))}
             </div>
+            {errors.genre && <span className={styles.error}>{errors.genre}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="publishYear">Published Year</label>
@@ -243,18 +127,20 @@ export default function Edit() {
               value={book.publishYear}
               onChange={changeHandler}
             />
+            {errors.publishYear && <span className={styles.error}>{errors.publishYear}</span>}
           </div>
           <div className={styles["form-group"]}>
             <label htmlFor="summary">Summary</label>
             <textarea
               name="summary"
               id="book-summary"
-              placeholder="summary"
+              placeholder="Summary"
               rows="10"
               cols="100"
               value={book.summary}
               onChange={changeHandler}
             ></textarea>
+            {errors.summary && <span className={styles.error}>{errors.summary}</span>}
           </div>
 
           <button type="submit">Edit</button>
