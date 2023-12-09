@@ -14,7 +14,7 @@ export default function Header() {
             <h1>
               <Link to="/">THE BOOKSHELF</Link>
             </h1>
-            <p style={{fontStyle:"italic"}}>let the magic begin...</p>
+            <p style={{fontStyle:"italic"}}>let the search begin...</p>
           </span>
         </div>
         <nav id="mainav" className="fl_right">
