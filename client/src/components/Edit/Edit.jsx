@@ -65,23 +65,23 @@ export default function Edit() {
             <label htmlFor="genre">Genres</label>
             <div className={styles.genre}>
               {[
-                "Biography",
-                "Classics",
-                "Comics",
-                "Cookbooks",
-                "Crime",
-                "Fantasy",
-                "Fiction",
-                "History",
-                "Horror",
-                "Humor/comedy",
-                "Mystery",
-                "Poetry",
-                "Romance",
-                "Science fiction",
-                "Travel",
-                "Thriller",
-                "Other",
+                "Biography ",
+                "Classics ",
+                "Comics ",
+                "Cookbooks ",
+                "Crime ",
+                "Fantasy ",
+                "Fiction ",
+                "History ",
+                "Horror ",
+                "Humor/comedy ",
+                "Mystery ",
+                "Poetry ",
+                "Romance ",
+                "Science fiction ",
+                "Travel ",
+                "Thriller ",
+                "Other ",
               ].map((genre) => (
                 <label key={genre}>
                   <input
@@ -89,7 +89,7 @@ export default function Edit() {
                     name="genre"
                     value={genre}
                     checked={book.genre?.includes(genre)}
-                    onChange={handleCheckboxChange}
+                    onChange={() => handleCheckboxChange(genre)}
                   />
                   <span>{genre}</span>
                 </label>

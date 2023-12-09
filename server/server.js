@@ -1347,14 +1347,14 @@
       "87074a95-4f7a-480c-a51f-0b273924afec": {
         _ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
         title: "The Nightingale",
-        isbn: "",
+        isbn: "9780312577223",
         author: "Kristin Hannah",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681839850i/21853621.jpg",
         genre: ["Fiction ", "History ", "Romance "],
         publishYear: "2015",
         summary:
-          "n love we find out who we want to be.\nIn war we find out who we are.\n\nFRANCE, 1939\n\nIn the quiet village of Carriveau, Vianne Mauriac says good-bye to her husband, Antoine, as he heads for the Front. She doesn’t believe that the Nazis will invade France…but invade they do, in droves of marching soldiers, in caravans of trucks and tanks, in planes that fill the skies and drop bombs upon the innocent. When a German captain requisitions Vianne’s home, she and her daughter must live with the enemy or lose everything. Without food or money or hope, as danger escalates all around them, she is forced to make one impossible choice after another to keep her family alive.\n\nVianne’s sister, Isabelle, is a rebellious eighteen-year-old, searching for purpose with all the reckless passion of youth. While thousands of Parisians march into the unknown terrors of war, she meets Gaëtan, a partisan who believes the French can fight the Nazis from within France, and she falls in love as only the young can…completely. But when he betrays her, Isabelle joins the Resistance and never looks back, risking her life time and again to save others.",
+          "In love we find out who we want to be.\nIn war we find out who we are.\n\nFRANCE, 1939\n\nIn the quiet village of Carriveau, Vianne Mauriac says good-bye to her husband, Antoine, as he heads for the Front. She doesn’t believe that the Nazis will invade France…but invade they do, in droves of marching soldiers, in caravans of trucks and tanks, in planes that fill the skies and drop bombs upon the innocent. When a German captain requisitions Vianne’s home, she and her daughter must live with the enemy or lose everything. Without food or money or hope, as danger escalates all around them, she is forced to make one impossible choice after another to keep her family alive.\n\nVianne’s sister, Isabelle, is a rebellious eighteen-year-old, searching for purpose with all the reckless passion of youth. While thousands of Parisians march into the unknown terrors of war, she meets Gaëtan, a partisan who believes the French can fight the Nazis from within France, and she falls in love as only the young can…completely. But when he betrays her, Isabelle joins the Resistance and never looks back, risking her life time and again to save others.",
         _createdOn: 1701102556256,
         _id: "87074a95-4f7a-480c-a51f-0b273924afec",
       },

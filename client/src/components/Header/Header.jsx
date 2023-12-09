@@ -23,7 +23,7 @@ export default function Header() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/catalog">Catalog</Link>
+              <Link to="/catalog">Bookshelves</Link>
             </li>
             {isAuthenticated && (
               <>

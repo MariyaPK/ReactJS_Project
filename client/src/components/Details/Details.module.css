@@ -1,4 +1,3 @@
-/* Container for book details */
 .details {
   width: 60%;
   margin: 0 auto;
@@ -12,7 +11,7 @@
 .details-book {
   flex-direction: row;
   font-size: 12px;
-  height: 550px;
+  height: auto;
 }
 
 .book-image-left img {
