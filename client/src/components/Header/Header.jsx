@@ -11,9 +11,6 @@ export default function Header() {
       <header id="header" className="hoc clear">
         <div id="logo" className="fl_left" style={{ display: "flex", alignItems: "center" }}>
           <span>
-            {/* <img src="./images/homeLogo.png" alt="homeLogo" style={{ width: "120px", height: "80px" }} /> */}
-          </span>
-          <span>
             <h1>
               <Link to="/">THE BOOKSHELF</Link>
             </h1>

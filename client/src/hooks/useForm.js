@@ -34,13 +34,13 @@ const validateLoginForm = (values) => {
   if (!values.email) {
     errors.email = "Email is required";
   } else if (!/^\S+@\S+\.\S+$/.test(values.email)) {
-    errors.email = "Invalid email address";
+    errors.email = "Invalid email or password";
   }
 
   if (!values.password) {
     errors.password = "Password is required";
   }
-
+  
   return errors;
 };
 

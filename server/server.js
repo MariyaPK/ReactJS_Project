@@ -1337,7 +1337,7 @@
         author: "Rebecca Yarros",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1666994927i/61431922.jpg",
-        genre: ["Fantasy", "Romance", "Fiction"],
+        genre: ["Fantasy ", "Romance ", "Fiction "],
         publishYear: "2023",
         summary:
           "Twenty-year-old Violet Sorrengail was supposed to enter the Scribe Quadrant, living a quiet life among books and history. Now, the commanding general—also known as her tough-as-talons mother—has ordered Violet to join the hundreds of candidates striving to become the elite of Navarre: dragon riders.\n\nBut when you’re smaller than everyone else and your body is brittle, death is only a heartbeat away...because dragons don’t bond to “fragile” humans. They incinerate them.\n\nWith fewer dragons willing to bond than cadets, most would kill Violet to better their own chances of success. The rest would kill her just for being her mother’s daughter—like Xaden Riorson, the most powerful and ruthless wingleader in the Riders Quadrant.\n\nShe’ll need every edge her wits can give her just to see the next sunrise.\n\nYet, with every day that passes, the war outside grows more deadly, the kingdom's protective wards are failing, and the death toll continues to rise. Even worse, Violet begins to suspect leadership is hiding a terrible secret.\n\nFriends, enemies, lovers. Everyone at Basgiath War College has an agenda—because once you enter, there are only two ways out: graduate or die",
@@ -1351,7 +1351,7 @@
         author: "Kristin Hannah",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1681839850i/21853621.jpg",
-        genre: ["Fiction", "History", "Romance"],
+        genre: ["Fiction ", "History ", "Romance "],
         publishYear: "2015",
         summary:
           "n love we find out who we want to be.\nIn war we find out who we are.\n\nFRANCE, 1939\n\nIn the quiet village of Carriveau, Vianne Mauriac says good-bye to her husband, Antoine, as he heads for the Front. She doesn’t believe that the Nazis will invade France…but invade they do, in droves of marching soldiers, in caravans of trucks and tanks, in planes that fill the skies and drop bombs upon the innocent. When a German captain requisitions Vianne’s home, she and her daughter must live with the enemy or lose everything. Without food or money or hope, as danger escalates all around them, she is forced to make one impossible choice after another to keep her family alive.\n\nVianne’s sister, Isabelle, is a rebellious eighteen-year-old, searching for purpose with all the reckless passion of youth. While thousands of Parisians march into the unknown terrors of war, she meets Gaëtan, a partisan who believes the French can fight the Nazis from within France, and she falls in love as only the young can…completely. But when he betrays her, Isabelle joins the Resistance and never looks back, risking her life time and again to save others.",
@@ -1365,7 +1365,7 @@
         author: "Viola Davis",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1650842995i/58687126.jpg",
-        genre: ["Biography"],
+        genre: ["Biography "],
         publishYear: "2022",
         summary:
           "In my book, you will meet a little girl named Viola who ran from her past until she made a life-changing decision to stop running forever.\n\nThis is my story, from a crumbling apartment in Central Falls, Rhode Island, to the stage in New York City, and beyond. This is the path I took to finding my purpose but also my voice in a world that didn’t always see me.\n\nAs I wrote Finding Me, my eyes were open to the truth of how our stories are often not given close examination. We are forced to reinvent them to fit into a crazy, competitive, judgmental world. So I wrote this for anyone running through life untethered, desperate and clawing their way through murky memories, trying to get to some form of self-love. For anyone who needs reminding that a life worth living can only be born from radical honesty and the courage to shed facades and be . . . you.\n\nFinding Me is a deep reflection, a promise, and a love letter of sorts to self. My hope is that my story will inspire you to light up your own life with creative expression and rediscover who you were before the world put a label on you.",
@@ -1379,7 +1379,7 @@
         author: "Huda Fahmy",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685352217i/78292425.jpg",
-        genre: ["Humor and comedy", "Comics"],
+        genre: ["Humor/Comedy ", "Comics "],
         publishYear: "2023",
         summary:
           "In this laugh-out-loud funny sequel to the graphic novel Huda F Are You?, the Fahmys are off to Disney World, but self-conscious Huda worries her family will stand out too much.\n\nHuda and her sisters can’t believe it when her parents announce that they’re actually taking a vacation this summer . . . to DISNEY WORLD! But it’s not quite as perfect as it seems. First Huda has to survive a 24-hour road trip from Michigan to Florida, with her sisters annoying her all the way. And then she can’t help but notice the people staring at her and her family when they pray in public. Back home in Dearborn she and her family blend right in because there are so many other Muslim families, but not so much in Florida and along the way.\n\nIt’s a vacation of forced (but unexpectly successful?) sisterly bonding, a complicated new friendship, a bit more independence, and some mixed feelings about her family’s public prayers. Huda is proud of her religion and who she is, but she still sure wishes she didn’t care so much what other people thought.",
@@ -1393,7 +1393,7 @@
         author: "Isa Arsén",
         imageUrl:
           "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1685353197i/78299257.jpg",
-        genre: ["History", "Fiction", "Romance", "Science fiction"],
+        genre: ["History ", "Fiction ", "Romance ", "Science fiction "],
         publishYear: "2023",
         summary:
           "How far would you travel for love?\n\nIntelligent but isolated recent physics graduate Annie Fisk feels an undeniable pull toward space. Her childhood memories dimmed by loss, she has left behind her home, her family, and her first love in pursuit of intellectual fulfillment. When she finally lands a job as a NASA secretary during the Apollo 11 mission, the work is everything she dreamed, and while she feels a budding attraction to one of the engineers, she can’t get distracted. Not now.\n\nWhen her inability to ignore mistaken calculations propels her into a new position, Annie finds herself torn between her ambition, her heart, and a mysterious discovery that upends everything she knows to be scientifically true. Can she overcome her doubts and reach beyond the limits of time and space?\n\nAffecting, immersive, and kaleidoscopic, Shoot the Moon tells the story of one singular life at multiple points in time, one woman's quest to honor both her head and her heart amid the human toll of scientific progress.",
@@ -1406,7 +1406,7 @@
         isbn: "9780007119318",
         author: "Agatha Christie",
         imageUrl: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1486131451i/853510.jpg",
-        genre: ["Mystery", "Classics", "Crime", "Fiction", "Thriller"],
+        genre: ["Mystery ", "Classics ", "Crime ", "Fiction ", "Thriller "],
         publishYear: "1934",
         summary:
           "Just after midnight, a snowdrift stops the famous Orient Express in its tracks as it travels through the mountainous Balkans. The luxurious train is surprisingly full for the time of the year but, by the morning, it is one passenger fewer. An American tycoon lies dead in his compartment, stabbed a dozen times, his door locked from the inside.\n\nOne of the passengers is none other than detective Hercule Poirot. On vacation.\n\nIsolated and with a killer on board, Poirot must identify the murderer—in case he or she decides to strike again.\n\nLibrarian's note: the first fifteen novels in the Hercule Poirot series are 1) The Mysterious Affair at Styles, 1920; 2) The Murder on the Links, 1923; 3) The Murder of Roger Ackroyd, 1926; 4) The Big Four, 1927; 5) The Mystery of the Blue Train, 1928; 6) Peril at End House, 1932; 7) Lord Edgware Dies, 1933; 8) Murder on the Orient Express, 1934; 9) Three Act Tragedy, 1935; 10) Death in the Clouds, 1935; 11) The A.B.C. Murders, 1936; 12) Murder in Mesopotamia, 1936; 13) Cards on the Table, 1936; 14) Dumb Witness, 1937; and 15) Death on the Nile, 1937. These are just the novels; Poirot also appears in this period in a play, Black Coffee, 1930, and two collections of short stories, Poirot Investigates, 1924, and Murder in the Mews, 1937. Each novel, play and short story has its own entry on Goodreads.",

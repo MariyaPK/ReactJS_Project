@@ -14,7 +14,8 @@ import { useBookContext } from "../../contexts/BookContext";
 import CommentForm from "../Comments/CommentForm";
 import Comments from "../Comments/Comments";
 import Likes from "../Likes/Likes";
-import BookRating from "../BookRating/BookRating";
+
+import Loading from "../Loading/Loading";
 
 export default function Details() {
   const { bookID } = useParams();
@@ -24,10 +25,19 @@ export default function Details() {
   const [book, dispatch] = useReducer(bookReducer, {});
   const bookService = useService(bookServiceFactory);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   const [showMore, setShowMore] = useState(false);
 
   useEffect(() => {
-    // console.log('Details Component Book:', bookID);
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
     Promise.all([bookService.getBook(bookID), commentService.getAllComments(bookID)])
       .then(([bookData, comments]) => {
         const bookState = {
@@ -68,71 +78,78 @@ export default function Details() {
 
   return (
     <section className={styles.details}>
-      <h2>{book.title}</h2>
-      <div className={styles["details-book"]}>
-        <div className={styles["book-details"]}>
-          <div className={styles["book-image-left"]}>
-            <img src={book.imageUrl} alt={book.title} />
-          </div>
-          <div className={styles["book-details-right"]}>
-            <p>
-              <span>ISBN: </span>
-              <span> {book.isbn} </span>
-            </p>
-            <p>
-              <span>Author: </span> <span>{book.author} </span>
-            </p>
-            <p>
-              <span>Genres: </span> <span>{book.genre} </span>
-            </p>
-            <p>
-              <span>Summary: </span>
-              <span>{showMore ? book.summary : `${book.summary?.slice(0, 300)}...`}</span>
-              {!showMore && (
-                <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
-                  Show More
-                </button>
-              )}
-              {showMore && (
-                <button className={styles.showMoreButton} onClick={() => setShowMore(false)}>
-                  Show Less
-                </button>
-              )}
-            </p>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <h2>{book.title}</h2>
+          <div className={styles["details-book"]}>
+            <div className={styles["book-details"]}>
+              <div className={styles["book-image-left"]}>
+                <img src={book.imageUrl} alt={book.title} />
+              </div>
+              <div className={styles["book-details-right"]}>
+                <p>
+                  <span>ISBN: </span>
+                  <span> {book.isbn} </span>
+                </p>
+                <p>
+                  <span>Author: </span> <span>{book.author} </span>
+                </p>
+                <p>
+                  <span>Genres: </span> <span>{book.genre} </span>
+                </p>
+                <p>
+                  <span>Summary: </span>
+                  <span>{showMore ? book.summary : `${book.summary?.slice(0, 300)}...`}</span>
+                  {!showMore && (
+                    <button className={styles.showMoreButton} onClick={() => setShowMore(true)}>
+                      Show More
+                    </button>
+                  )}
+                  {showMore && (
+                    <button className={styles.showMoreButton} onClick={() => setShowMore(false)}>
+                      Show Less
+                    </button>
+                  )}
+                </p>
 
-            {isAuthenticated && isOwner && (
-              <div className={styles["details-btn"]}>
-                <button type="submit" onClick={() => navigate(`/details/${book._id}/edit`)}>
-                  Edit
-                </button>
-                <button type="submit" onClick={deleteClickHandler}>
-                  Delete
-                </button>
+                {isAuthenticated && isOwner && (
+                  <div className={styles["details-btn"]}>
+                    <button type="submit" onClick={() => navigate(`/details/${book._id}/edit`)}>
+                      Edit
+                    </button>
+                    <button type="submit" onClick={deleteClickHandler}>
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+            {isAuthenticated && (
+              <div className={styles["details-addons"]}>
+                <div className={styles["likes-rates"]}>
+                  <Likes />
+                </div>
+              </div>
+            )}
+            {isAuthenticated && (
+              <div className={styles["details-addons2"]}>
+                <div className={styles["comment-area"]}>
+                  <CommentForm onCommentSubmit={onCommentSubmit} />
+                </div>
+                <Comments book={book} />
               </div>
             )}
           </div>
-        </div>
-        {isAuthenticated && (
-          <div className={styles["details-addons"]}>
-            <div className={styles["likes-rates"]}>
-              <Likes />
-              <BookRating />
+          {!isAuthenticated && (
+            <div className={styles.signIn}>
+              <button className={styles.btn} onClick={() => navigate(`/login`)}>
+                Sign in to like and comment
+              </button>
             </div>
-          </div>
-        )}
-        {isAuthenticated && (
-          <div className={styles["details-addons2"]}>
-            <div className={styles["comment-area"]}>
-              <CommentForm onCommentSubmit={onCommentSubmit} />
-            </div>
-            <Comments book={book} />
-          </div>
-        )}
-      </div>
-      {!isAuthenticated && (
-        <div className={styles.signIn}>
-          <button onClick={() => navigate(`/login`)}>Sign in to like and comment</button>
-        </div>
+          )}
+        </>
       )}
     </section>
   );

@@ -16,6 +16,7 @@ export const AuthProvider = ({ children }) => {
     try {
       const result = await authService.login(data);
 
+      console.log(result)
       setAuth(result);
 
       navigate("/");

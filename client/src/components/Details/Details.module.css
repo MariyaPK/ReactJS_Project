@@ -12,6 +12,7 @@
 .details-book {
   flex-direction: row;
   font-size: 12px;
+  height: 550px;
 }
 
 .book-image-left img {
@@ -38,6 +39,7 @@
 .showMoreButton {
   color: rgb(87, 72, 72);
   border: none;
+  background: none;
   cursor: pointer;
   font-style: italic;
 }
@@ -94,9 +96,10 @@
 }
 
 .signIn button {
-  padding: 30px;
+  margin-bottom: 30px;
   color: rgb(51, 46, 46);
   border: none;
+  background: none;
   cursor: pointer;
   font-style: italic;
   text-shadow: 0px 3px 8px black;
